@@ -1,0 +1,12 @@
+﻿  MainMenu.cpp
+d:\users\ethan.hop7668\desktop\source - brandon van kan and ethan hoppe\my first opengl\TextLabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+MainMenu.cpp(33): warning C4018: '<': signed/unsigned mismatch
+MainMenu.cpp(37): warning C4018: '<': signed/unsigned mismatch
+MainMenu.cpp(41): warning C4018: '<': signed/unsigned mismatch
+MainMenu.cpp(66): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Generating code
+  77 of 1607 functions ( 4.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    178 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  My First OpenGL.vcxproj -> D:\Users\Ethan.Hop7668\Desktop\Source - Brandon Van Kan and Ethan Hoppe\Release\My First OpenGL.exe
