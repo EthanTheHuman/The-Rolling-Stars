@@ -102,6 +102,9 @@
     <ClCompile Include="GameLevel.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="BallPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Header Files\Technical</Filter>
+    </ClInclude>
+    <ClInclude Include="BallPlayer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

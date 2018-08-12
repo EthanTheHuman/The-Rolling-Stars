@@ -5,7 +5,10 @@
 
 GameLevel::GameLevel()
 {
-
+	BallPlayer Player1 = BallPlayer("Resources/Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader);
+	BallPlayer Player2 = BallPlayer("Resources/Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader);
+	BallPlayer Player3 = BallPlayer("Resources/Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader);
+	BallPlayer Player4 = BallPlayer("Resources/Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader);
 }
 
 

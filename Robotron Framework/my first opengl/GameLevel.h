@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "BallPlayer.h";
 
 // Dependencies
 #include <iostream>
@@ -34,5 +35,24 @@ public:
 	void Render();
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
+
+private:
+
+	//Graphics stuff
+	Camera MyCamera;
+
+	//Shaders
+	GLuint SpriteShader;
+	GLuint UISpriteShader;
+	GLuint ModelBasicShader;
+	GLuint AmbientShader;
+	GLuint TextShader;
+	GLuint SkyboxShader;
+
+	//Game Objects
+	BallPlayer Player1;
+	BallPlayer Player2;
+	BallPlayer Player3;
+	BallPlayer Player4;
 };
 
