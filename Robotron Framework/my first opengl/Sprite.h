@@ -22,33 +22,34 @@ class Sprite
 public:
 	Sprite();
 	Sprite(char * _filename, Camera * _camera, GLuint _program);
+	virtual void Init(char * _filename, Camera * _camera, GLuint _program);
 	~Sprite();
 
 	//Simple
-	void render();
+	virtual void render();
 
 	//Refresh Matrices
-	void RefreshMVP();
-	void RefreshModelMatrix();
+	virtual void RefreshMVP();
+	virtual void RefreshModelMatrix();
 
 	//Translation
-	void SetTranslation(glm::vec3 _Translation);
-	void AddTranslation(glm::vec3 _Translation);
+	virtual void SetTranslation(glm::vec3 _Translation);
+	virtual void AddTranslation(glm::vec3 _Translation);
 
 	//Rotation
-	void SetRotation(glm::vec3 _Rotation);
-	void AddRotation(glm::vec3 _Rotation);
+	virtual void SetRotation(glm::vec3 _Rotation);
+	virtual void AddRotation(glm::vec3 _Rotation);
 
 	//Scale
-	void SetScale(glm::vec3 _Scale);
-	void AddScale(glm::vec3 _Scale);
+	virtual void SetScale(glm::vec3 _Scale);
+	virtual void AddScale(glm::vec3 _Scale);
 
 	//Texture Coordinates
-	void ChangeCoordinates(Coords _TopLeft, Coords _TopRight, Coords _BottomLeft, Coords _BottomRight);
-	void ChangeTopLeft(int _x, int _y);
-	void ChangeTopRight(int _x, int _y);
-	void ChangeBottomLeft(int _x, int _y);
-	void ChangeBottomRight(int _x, int _y);
+	virtual void ChangeCoordinates(Coords _TopLeft, Coords _TopRight, Coords _BottomLeft, Coords _BottomRight);
+	virtual void ChangeTopLeft(int _x, int _y);
+	virtual void ChangeTopRight(int _x, int _y);
+	virtual void ChangeBottomLeft(int _x, int _y);
+	virtual void ChangeBottomRight(int _x, int _y);
 
 private:
 	//Texture

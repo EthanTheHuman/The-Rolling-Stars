@@ -174,7 +174,6 @@
     <ClInclude Include="TextLabel.h" />
     <ClInclude Include="UFO.h" />
     <ClInclude Include="UISprite.h" />
-    <ClInclude Include="utils.h" />
     <ClInclude Include="Utils2.h" />
   </ItemGroup>
   <ItemGroup>

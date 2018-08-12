@@ -39,7 +39,7 @@ public:
 private:
 
 	//Graphics stuff
-	Camera MyCamera;
+	Camera* MyCamera;
 
 	//Shaders
 	GLuint SpriteShader;
@@ -50,9 +50,9 @@ private:
 	GLuint SkyboxShader;
 
 	//Game Objects
-	BallPlayer Player1;
-	BallPlayer Player2;
-	BallPlayer Player3;
-	BallPlayer Player4;
+	BallPlayer* Player1;
+	BallPlayer* Player2;
+	BallPlayer* Player3;
+	BallPlayer* Player4;
 };
 

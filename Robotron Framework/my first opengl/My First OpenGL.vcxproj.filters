@@ -103,7 +103,7 @@
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="BallPlayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +140,6 @@
     <ClInclude Include="Utils2.h">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Header Files\Technical</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
@@ -168,7 +165,7 @@
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
     <ClInclude Include="BallPlayer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

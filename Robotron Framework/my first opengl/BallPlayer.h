@@ -1,7 +1,6 @@
 #pragma once
 #include "Sprite.h"
-class BallPlayer :
-	public Sprite
+class BallPlayer : Sprite
 {
 public:
 	BallPlayer();

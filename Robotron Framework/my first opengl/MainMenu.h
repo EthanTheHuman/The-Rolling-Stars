@@ -20,7 +20,6 @@
 #include "UISprite.h"
 #include "Model.h"
 #include "TextLabel.h"
-#include "Utils.h"
 #include "CubeMap.h"
 #include "Player.h"
 #include "UFO.h"
@@ -47,7 +46,6 @@ public:
 	void Render();
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
-	void MenuUpdate();
 
 private:
 	// List of objects

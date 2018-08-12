@@ -4,9 +4,7 @@
 
 BallPlayer::BallPlayer()
 {
-
 }
-
 
 BallPlayer::~BallPlayer()
 {

@@ -7,143 +7,148 @@ Sprite::Sprite()
 
 Sprite::Sprite(char * _filename, Camera * _camera, GLuint _program)
 {
+	Init(_filename, _camera, _program);
+}
+
+void Sprite::Init(char * _filename, Camera * _camera, GLuint _program)
+{
 	//------------------------------------------------------------------------------------------------------------------------------------------
 
-		//Get this out of the way
-		m_Camera = _camera;
-		m_Program = _program;
-		glUseProgram(m_Program);
-
-	//------------------------------------------------------------------------------------------------------------------------------------------
-
-		// Initialise square with rainbow colors
-		GLfloat SquareVertices2[] = 
-		{
-			// Positions		// Colors			// Texture mapping
-			-1.0f, 1.0f, 0.0f,	1.0f, 0.0f, 0.0f,	m_TopLeft.x, m_TopLeft.y, // Top Left
-			1.0f, 1.0f, 0.0f,	1.0f, 1.0f, 1.0f,	m_TopRight.x, m_TopRight.y, // Top Right
-			1.0f, -1.0f, 0.0f,	0.0f, 1.0f, 0.0f,	m_BottomRight.x, m_BottomRight.y, // Bottom Right
-			-1.0f, -1.0f, 0.0f,	0.0f, 0.0f, 1.0f,	m_BottomLeft.x, m_BottomLeft.y // Bottom Left
-		};
-
-		// Square indices
-		GLuint SquareIndices[] = 
-		{
-			0, 1, 2, // First Triangle
-			0, 2, 3 // Second Triangle
-		};
+	//Get this out of the way
+	m_Camera = _camera;
+	m_Program = _program;
+	glUseProgram(m_Program);
 
 	//------------------------------------------------------------------------------------------------------------------------------------------
 
-		// Vertex Array Object
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
+	// Initialise square with rainbow colors
+	GLfloat SquareVertices2[] =
+	{
+		// Positions		// Colors			// Texture mapping
+		-1.0f, 1.0f, 0.0f,	1.0f, 0.0f, 0.0f,	m_TopLeft.x, m_TopLeft.y, // Top Left
+		1.0f, 1.0f, 0.0f,	1.0f, 1.0f, 1.0f,	m_TopRight.x, m_TopRight.y, // Top Right
+		1.0f, -1.0f, 0.0f,	0.0f, 1.0f, 0.0f,	m_BottomRight.x, m_BottomRight.y, // Bottom Right
+		-1.0f, -1.0f, 0.0f,	0.0f, 0.0f, 1.0f,	m_BottomLeft.x, m_BottomLeft.y // Bottom Left
+	};
 
-		// Vertex Buffer Object
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData
-		(
-			GL_ARRAY_BUFFER,
-			sizeof(SquareVertices2),
-			SquareVertices2,
-			GL_STATIC_DRAW
-		);
-
-		// Vertex Array Object Again
-		glVertexAttribPointer
-		(
-			0,
-			3,
-			GL_FLOAT,
-			GL_FALSE,
-			8 * sizeof(GLfloat),
-			(GLvoid*)0
-		);
-
-		glEnableVertexAttribArray(0);
-
-		glVertexAttribPointer
-		(
-			1,
-			3,
-			GL_FLOAT,
-			GL_FALSE,
-			8 * sizeof(GLfloat),
-			(GLvoid*)(3 * sizeof(GLfloat))
-		);
-
-		glEnableVertexAttribArray(1);
-
-		glVertexAttribPointer
-		(
-			2,
-			2,
-			GL_FLOAT,
-			GL_FALSE,
-			8 * sizeof(GLfloat),
-			(GLvoid*)(6 * sizeof(GLfloat))
-		);
-
-		glEnableVertexAttribArray(2);
-
-		// Element array buffer
-		glGenBuffers(1, &ebo);	// Add "GLuint ebo" to global variables
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-
-		glBufferData
-		(
-			GL_ELEMENT_ARRAY_BUFFER,
-			sizeof(SquareIndices),
-			SquareIndices,
-			GL_STATIC_DRAW
-		);
+	// Square indices
+	GLuint SquareIndices[] =
+	{
+		0, 1, 2, // First Triangle
+		0, 2, 3 // Second Triangle
+	};
 
 	//------------------------------------------------------------------------------------------------------------------------------------------
-		glGenTextures(1, &TempTexture);
-		glBindTexture(GL_TEXTURE_2D, TempTexture);
 
-		// Loading texture
-		unsigned char* image = SOIL_load_image
-		(
-			_filename,			// File path/name
-			&width,				// Output for image width
-			&height,			// Output for number of channels
-			0,					// Number of channels
-			SOIL_LOAD_RGBA		// Load RGB values only
-		);
+	// Vertex Array Object
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
 
-		glTexImage2D
-		(
-			GL_TEXTURE_2D,		// Type of texture
-			0,					// Mipmap level, 0 for base
-			GL_RGBA,				// Number of color components in texture
-			width,				// Width of texture
-			height,				// Height of texture
-			0,					// Must be 0
-			GL_RGBA,				// Format for the pixel data
-			GL_UNSIGNED_BYTE,	// Data type of the pixel data
-			image				// Pointer to image data in memory
-		);
+	// Vertex Buffer Object
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData
+	(
+		GL_ARRAY_BUFFER,
+		sizeof(SquareVertices2),
+		SquareVertices2,
+		GL_STATIC_DRAW
+	);
 
-		glGenerateMipmap(GL_TEXTURE_2D);
-		SOIL_free_image_data(image);
+	// Vertex Array Object Again
+	glVertexAttribPointer
+	(
+		0,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		8 * sizeof(GLfloat),
+		(GLvoid*)0
+	);
+
+	glEnableVertexAttribArray(0);
+
+	glVertexAttribPointer
+	(
+		1,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		8 * sizeof(GLfloat),
+		(GLvoid*)(3 * sizeof(GLfloat))
+	);
+
+	glEnableVertexAttribArray(1);
+
+	glVertexAttribPointer
+	(
+		2,
+		2,
+		GL_FLOAT,
+		GL_FALSE,
+		8 * sizeof(GLfloat),
+		(GLvoid*)(6 * sizeof(GLfloat))
+	);
+
+	glEnableVertexAttribArray(2);
+
+	// Element array buffer
+	glGenBuffers(1, &ebo);	// Add "GLuint ebo" to global variables
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+
+	glBufferData
+	(
+		GL_ELEMENT_ARRAY_BUFFER,
+		sizeof(SquareIndices),
+		SquareIndices,
+		GL_STATIC_DRAW
+	);
+
+	//------------------------------------------------------------------------------------------------------------------------------------------
+	glGenTextures(1, &TempTexture);
+	glBindTexture(GL_TEXTURE_2D, TempTexture);
+
+	// Loading texture
+	unsigned char* image = SOIL_load_image
+	(
+		_filename,			// File path/name
+		&width,				// Output for image width
+		&height,			// Output for number of channels
+		0,					// Number of channels
+		SOIL_LOAD_RGBA		// Load RGB values only
+	);
+
+	glTexImage2D
+	(
+		GL_TEXTURE_2D,		// Type of texture
+		0,					// Mipmap level, 0 for base
+		GL_RGBA,				// Number of color components in texture
+		width,				// Width of texture
+		height,				// Height of texture
+		0,					// Must be 0
+		GL_RGBA,				// Format for the pixel data
+		GL_UNSIGNED_BYTE,	// Data type of the pixel data
+		image				// Pointer to image data in memory
+	);
+
+	glGenerateMipmap(GL_TEXTURE_2D);
+	SOIL_free_image_data(image);
 
 
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-		GLfloat bordercolor[] = { 1.0f, 0.0f,0.0f,0.0f };
-		glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, bordercolor);
+	GLfloat bordercolor[] = { 1.0f, 0.0f,0.0f,0.0f };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, bordercolor);
 
-		glBindTexture(GL_TEXTURE_2D, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
-		m_Texture = TempTexture;
+	m_Texture = TempTexture;
 
-		RefreshMVP();
+	RefreshMVP();
 
-		SetScale({ 1,1,0 });
+	SetScale({ 1,1,0 });
 	//------------------------------------------------------------------------------------------------------------------------------------------
 }
 
