@@ -135,22 +135,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="client.cpp" />
-    <ClCompile Include="consoletools.cpp" />
     <ClCompile Include="CubeMap.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="inputlinebuffer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="network.cpp" />
-    <ClCompile Include="networkmain.cpp" />
     <ClCompile Include="OtherPlayer.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="server.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
-    <ClCompile Include="socket.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -161,23 +155,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="client.h" />
-    <ClInclude Include="consoletools.h" />
     <ClInclude Include="CubeMap.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="GameLevel.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="InputLineBuffer.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelMesh.h" />
-    <ClInclude Include="network.h" />
-    <ClInclude Include="networkentity.h" />
     <ClInclude Include="OtherPlayer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="server.h" />
     <ClInclude Include="ShaderLoader.h" />
-    <ClInclude Include="socket.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Sprite.h" />
@@ -186,7 +174,6 @@
     <ClInclude Include="UISprite.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="Utils2.h" />
-    <ClInclude Include="WorkQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\Ambient.fs" />

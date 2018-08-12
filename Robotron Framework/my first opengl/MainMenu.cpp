@@ -101,17 +101,3 @@ void MainMenu::MoveCharacter(unsigned char KeyState[255]) {
 	{
 	}
 }
-
-void MainMenu::MenuUpdate() {
-	
-}
-
-void MainMenu::ChangeNames(std::vector<std::string> _strings)
-{
-	
-}
-
-void MainMenu::ChangeHostNames(std::vector<std::string> _strings)
-{
-	
-}

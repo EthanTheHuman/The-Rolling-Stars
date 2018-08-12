@@ -48,8 +48,6 @@ public:
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
 	void MenuUpdate();
-	void ChangeNames(std::vector<std::string> _strings);
-	void ChangeHostNames(std::vector<std::string> _strings);
 
 private:
 	// List of objects

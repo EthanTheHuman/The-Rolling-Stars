@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "MainMenu.h"
+#include "GameLevel.h"
 
 GameManager* GameManager::m_Manager;
 
@@ -66,6 +67,8 @@ GameManager::GameManager()
 {
 	MainMenu* newMainMenu = new MainMenu();
 	pScenes.push_back(newMainMenu);
+	GameLevel* newGameLevel = new GameLevel();
+	pScenes.push_back(newGameLevel);
 }
 
 

@@ -46,12 +46,6 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{20f441e3-094f-4925-a632-b01c7c3b5269}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Network">
-      <UniqueIdentifier>{a9861b60-585c-4906-b304-97a7278df011}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\NetWork">
-      <UniqueIdentifier>{89b990c0-5283-4913-b3cc-c64579d9a701}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,27 +81,6 @@
     <ClCompile Include="CubeMap.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="client.cpp">
-      <Filter>Source Files\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="network.cpp">
-      <Filter>Source Files\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="server.cpp">
-      <Filter>Source Files\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="socket.cpp">
-      <Filter>Source Files\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="consoletools.cpp">
-      <Filter>Source Files\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="networkmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inputlinebuffer.cpp">
-      <Filter>Source Files\NetWork</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -126,6 +99,9 @@
     <ClCompile Include="OtherPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameLevel.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -139,9 +115,6 @@
     </ClInclude>
     <ClInclude Include="TextLabel.h">
       <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files\Technical</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Technical</Filter>
@@ -161,35 +134,11 @@
     <ClInclude Include="CubeMap.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="client.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="network.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="networkentity.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="server.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="socket.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="WorkQueue.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
     <ClInclude Include="Utils2.h">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Header Files\Technical</Filter>
-    </ClInclude>
-    <ClInclude Include="consoletools.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="InputLineBuffer.h">
-      <Filter>Header Files\Network</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Objects</Filter>
@@ -208,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="OtherPlayer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLevel.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Technical</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
