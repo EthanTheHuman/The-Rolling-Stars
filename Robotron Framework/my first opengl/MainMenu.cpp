@@ -24,7 +24,6 @@ void MainMenu::Init()
 
 	_Player = new Player(MyCamera, AmbientShader);
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
-	MenuUpdate();
 }
 
 void MainMenu::Deconstruct()
@@ -99,5 +98,6 @@ void MainMenu::MoveCharacter(unsigned char KeyState[255]) {
 	}
 	if (KeyState[(unsigned char)'s'] == INPUT_FIRST_PRESS)
 	{
+
 	}
 }

@@ -1,57 +1,12 @@
-﻿  Camera.cpp
-  client.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\client.cpp(70): warning C4101: '_usServerPort': unreferenced local variable
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\client.cpp(75): warning C4101: '_uiServerIndex': unreferenced local variable
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\client.cpp(249): warning C4018: '<': signed/unsigned mismatch
-  consoletools.cpp
-  CubeMap.cpp
-  Entity.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\entity.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\entity.cpp(12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  GameManager.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  inputlinebuffer.cpp
-  main.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  MainMenu.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(33): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(41): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(66): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  network.cpp
-  networkmain.cpp
-  OtherPlayer.cpp
-  Player.cpp
-  Scene.cpp
-  server.cpp
-  ShaderLoader.cpp
-  socket.cpp
-  Sound.cpp
-  Sphere.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sphere.cpp(22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sphere.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sphere.cpp(24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Sprite.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(236): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(237): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(243): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(244): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(250): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(251): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(257): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\sprite.cpp(258): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Compiling...
-  TextLabel.cpp
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.cpp(63): warning C4838: conversion from 'FT_Pos' to 'GLuint' requires a narrowing conversion
-  UFO.cpp
-  UISprite.cpp
-  Utils.cpp
+﻿  GameLevel.cpp
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\GameLevel.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(21): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(22): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating code
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\client.cpp(180): warning C4715: 'CClient::RetreveBroadcast': not all control paths return a value
-  1622 of 1622 functions (100.0%) were compiled, the rest were copied from previous compilation.
-    55 functions were new in current compilation
+  1 of 454 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  My First OpenGL.vcxproj -> C:\Users\Brandon\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe
+  My First OpenGL.vcxproj -> D:\Users\brandon.van7367\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe

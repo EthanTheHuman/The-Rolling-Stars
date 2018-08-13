@@ -36,10 +36,14 @@ public:
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
 
+	bool CheckCollision(BallPlayer * one, BallPlayer * two);
+
 private:
 
 	//Graphics stuff
 	Camera* MyCamera;
+	CubeMap * MySkybox;
+	ShaderLoader shaderloader;
 
 	//Shaders
 	GLuint SpriteShader;

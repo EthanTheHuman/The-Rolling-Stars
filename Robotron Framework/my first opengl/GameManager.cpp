@@ -65,8 +65,8 @@ Scene* GameManager::CurrentSceneClass()
 
 GameManager::GameManager()
 {
-	MainMenu* newMainMenu = new MainMenu();
-	pScenes.push_back(newMainMenu);
+	//MainMenu* newMainMenu = new MainMenu();
+	//pScenes.push_back(newMainMenu);
 	GameLevel* newGameLevel = new GameLevel();
 	pScenes.push_back(newGameLevel);
 }
