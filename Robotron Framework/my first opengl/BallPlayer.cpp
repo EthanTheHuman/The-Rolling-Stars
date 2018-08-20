@@ -38,6 +38,8 @@ void BallPlayer::MoveCharacter(unsigned char KeyState[255])
 	{
 		SpeedY -= acceleration;
 	}
+
+
 }
 
 void BallPlayer::UpdateCharater()

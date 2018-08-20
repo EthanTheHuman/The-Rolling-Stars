@@ -9,6 +9,7 @@ public:
 	void render();
 	void MoveCharacter(unsigned char KeyState[255]);
 	void UpdateCharater();
+	bool BorderCheck();
 	glm::vec2 ReturnPosition();
 	void ChangePosition(glm::vec2 pos);
 	float ColisionRadius = 0.1;
