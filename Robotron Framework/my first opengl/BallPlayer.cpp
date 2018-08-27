@@ -67,6 +67,39 @@ void BallPlayer::UpdateCharater()
 			SpeedY += friction;
 		}
 	}
+
+	//Boundaries
+	if (Xpos + SpeedX < -2.25f)
+	{
+		Sprite::SetTranslation({ Xpos, Ypos, 0 });
+		SpeedX = 0;
+		SpeedY = 0;
+		return;
+	}
+	if (Xpos + SpeedX > 2.25f)
+	{
+		Sprite::SetTranslation({ Xpos, Ypos, 0 });
+		SpeedX = 0;
+		SpeedY = 0;
+		return;
+	}
+	if (Ypos + SpeedY < -1.75f)
+	{
+		Sprite::SetTranslation({ Xpos, Ypos, 0 });
+		SpeedX = 0;
+		SpeedY = 0;
+		return;
+	}
+	if (Ypos + SpeedY > 1.75f)
+	{
+		Sprite::SetTranslation({ Xpos, Ypos, 0 });
+		SpeedX = 0;
+		SpeedY = 0;
+		return;
+	}
+
+
+	//Update player posistion
 	Ypos += SpeedY;
 	Xpos += SpeedX;
 	Sprite::SetTranslation({ Xpos, Ypos, 0 });

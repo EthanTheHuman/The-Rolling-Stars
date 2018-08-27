@@ -1,11 +1,11 @@
 ﻿  BallPlayer.cpp
-d:\users\jacob.dew7364\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
-d:\users\jacob.dew7364\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(15): warning C4305: 'initializing': truncation from 'double' to 'float'
 d:\users\jacob.dew7364\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(21): warning C4305: 'initializing': truncation from 'double' to 'float'
 d:\users\jacob.dew7364\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(22): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\robotron framework\my first opengl\BallPlayer.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating code
-  2 of 454 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 454 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   My First OpenGL.vcxproj -> D:\Users\Jacob.Dew7364\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe
