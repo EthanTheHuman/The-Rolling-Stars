@@ -5,10 +5,15 @@
 
 GameLevel::GameLevel()
 {
-	Player1 = new BallPlayer();
-	Player2 = new BallPlayer();
-	Player3 = new BallPlayer();
-	Player4 = new BallPlayer();
+	BallPlayer* Temp;
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
 }
 
 
@@ -25,11 +30,14 @@ void GameLevel::Init()
 	TextShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
 
-	Player1->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader);
-	Player2->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader);
-	Player2->ChangePosition({ 1,1 });
-	Player3->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader);
-	Player4->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader);
+	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader);
+	Balls[0]->ChangePosition({ -1,1 });
+	Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader);
+	Balls[1]->ChangePosition({ -1,-1 });
+	Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader);
+	Balls[2]->ChangePosition({ 1,-1 });
+	Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader);
+	Balls[3]->ChangePosition({ 1,1 });
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
 }
 
@@ -44,23 +52,45 @@ void GameLevel::Render()
 	glFrontFace(GL_CCW);
 
 	MySkybox->Render();
-	if (!CheckCollision(Player1, Player2)) {
-		Player1->render();
-		Player2->render();
+	for (auto Ball : Balls) {
+		Ball->render();
 	}
-	//Player3->render();
-	//Player4->render();
 }
 
 void GameLevel::Update()
 {
-	Player1->UpdateCharater();
-	Player2->UpdateCharater();
+	for (auto &Target : Balls) {
+		for (auto &Ball : Balls) {
+			if (Ball != Target) {
+				if (CheckCollision(Ball, Target)) {
+					float BX = Ball->ReturnPosition().x;
+					float BY = Ball->ReturnPosition().y;
+					float TX = Target->ReturnPosition().x;
+					float TY = Target->ReturnPosition().y;
+
+					float fDistance = sqrtf((BX - TX) * (BX - TX) + (BY - TY) * (BY - TY));
+					float fOverlap = 0.5f * (fDistance - Ball->ColisionRadius - Target->ColisionRadius);
+
+					BX -= fOverlap * (BX - TX) / fDistance;
+					BY -= fOverlap * (BY - TY) / fDistance;
+
+					TX += fOverlap * (BX - TX) / fDistance;
+					TY += fOverlap * (BY - TY) / fDistance;
+
+					Ball->ChangePosition({ BX, BY });
+					Target->ChangePosition({ TX, TY });
+				}
+			}
+		}
+	}
+	for (auto Ball : Balls) {
+		Ball->UpdateCharater();
+	}
 }
 
 void GameLevel::MoveCharacter(unsigned char KeyState[255])
 {
-	Player1->MoveCharacter(KeyState);
+	Balls[0]->MoveCharacter(KeyState);
 }
 
 bool GameLevel::CheckCollision(BallPlayer *one, BallPlayer* two) // AABB - Circle collision

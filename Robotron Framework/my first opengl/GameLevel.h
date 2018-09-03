@@ -54,9 +54,6 @@ private:
 	GLuint SkyboxShader;
 
 	//Game Objects
-	BallPlayer* Player1;
-	BallPlayer* Player2;
-	BallPlayer* Player3;
-	BallPlayer* Player4;
+	std::vector <BallPlayer*> Balls;
 };
 
