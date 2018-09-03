@@ -55,5 +55,6 @@ private:
 
 	//Game Objects
 	std::vector <BallPlayer*> Balls;
+	std::vector <pair<BallPlayer*, BallPlayer*>> CollidingPairs;
 };
 

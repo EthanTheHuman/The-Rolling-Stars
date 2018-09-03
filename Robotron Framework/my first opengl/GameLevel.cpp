@@ -63,26 +63,52 @@ void GameLevel::Update()
 		for (auto &Ball : Balls) {
 			if (Ball != Target) {
 				if (CheckCollision(Ball, Target)) {
-					float BX = Ball->ReturnPosition().x;
-					float BY = Ball->ReturnPosition().y;
-					float TX = Target->ReturnPosition().x;
-					float TY = Target->ReturnPosition().y;
 
-					float fDistance = sqrtf((BX - TX) * (BX - TX) + (BY - TY) * (BY - TY));
+					CollidingPairs.push_back({ Ball, Target });
+
+					float fDistance = sqrtf((Ball->Xpos - Target->Xpos) * (Ball->Xpos - Target->Xpos) + (Ball->Ypos - Target->Ypos) * (Ball->Ypos - Target->Ypos));
 					float fOverlap = 0.5f * (fDistance - Ball->ColisionRadius - Target->ColisionRadius);
 
-					BX -= fOverlap * (BX - TX) / fDistance;
-					BY -= fOverlap * (BY - TY) / fDistance;
+					Ball->Xpos -= fOverlap * (Ball->Xpos - Target->Xpos) / fDistance;
+					Ball->Ypos -= fOverlap * (Ball->Ypos - Target->Ypos) / fDistance;
 
-					TX += fOverlap * (BX - TX) / fDistance;
-					TY += fOverlap * (BY - TY) / fDistance;
-
-					Ball->ChangePosition({ BX, BY });
-					Target->ChangePosition({ TX, TY });
+					Target->Xpos += fOverlap * (Ball->Xpos - Target->Xpos) / fDistance;
+					Target->Ypos += fOverlap * (Ball->Ypos - Target->Ypos) / fDistance;
 				}
 			}
 		}
 	}
+
+	for (auto c : CollidingPairs) {
+		BallPlayer* B1 = c.first;
+		BallPlayer* B2 = c.second;
+
+		float fDistance = sqrtf((c.first->Xpos - c.second->Xpos) * (c.first->Xpos - c.second->Xpos) + (c.first->Ypos - c.second->Ypos) * (c.first->Ypos - c.second->Ypos));
+
+		float NX = (c.second->Xpos - c.first->Xpos) / fDistance;
+		float NY = (c.second->Ypos - c.first->Ypos) / fDistance;
+
+		float TX = -NY;
+		float TY = NX;
+
+		float dpTan1 = B1->SpeedX * TX + B1->SpeedY * TY;
+		float dpTan2 = B2->SpeedX * TX + B2->SpeedY * TY;
+
+		float dpNorm1 = B1->SpeedX * NX + B1->SpeedY * NY;
+		float dpNorm2 = B2->SpeedX * NX + B2->SpeedY * NY;
+
+		float M1 = (dpNorm1 * (B1->mass - B2->mass) + 2.0f * B2->mass * dpNorm2) / (B1->mass + B2->mass);
+		float M2 = (dpNorm2 * (B2->mass - B1->mass) + 2.0f * B1->mass * dpNorm1) / (B1->mass + B2->mass);
+
+		B1->SpeedX = TX * dpTan1 + NX * M1;
+		B1->SpeedY = TY * dpTan1 + NY * M1;
+		B2->SpeedX = TX * dpTan2 + NX * M2;
+		B2->SpeedY = TY * dpTan2 + NY * M2;
+	}
+	for (int I = 0; I < CollidingPairs.size(); I++) {
+		CollidingPairs.pop_back();
+	}
+
 	for (auto Ball : Balls) {
 		Ball->UpdateCharater();
 	}
@@ -95,11 +121,5 @@ void GameLevel::MoveCharacter(unsigned char KeyState[255])
 
 bool GameLevel::CheckCollision(BallPlayer *one, BallPlayer* two) // AABB - Circle collision
 {
-	float x1 = one->ReturnPosition().x;
-	float y1 = one->ReturnPosition().y;
-	float r1 = one->ColisionRadius;
-	float x2 = two->ReturnPosition().x;
-	float y2 = two->ReturnPosition().y;
-	float r2 = two->ColisionRadius;
-	return fabs((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)) < (r1 + r2) * (r1 + r2);
+	return (one->Xpos - two->Xpos) * (one->Xpos - two->Xpos) + (one->Ypos - two->Ypos) * (one->Ypos - two->Ypos) < (one->ColisionRadius + two->ColisionRadius) * (one->ColisionRadius + two->ColisionRadius);
 }

@@ -105,11 +105,6 @@ void BallPlayer::UpdateCharater()
 	Sprite::SetTranslation({ Xpos, Ypos, 0 });
 }
 
-glm::vec2 BallPlayer::ReturnPosition()
-{
-	return { Xpos, Ypos, };
-}
-
 void BallPlayer::ChangePosition(glm::vec2 pos) {
 	Xpos = pos.x;
 	Ypos = pos.y;
