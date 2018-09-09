@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(400, 200);
 	glutInitWindowSize(SRCWIDTH, SRCHEIGHT);
-	glutCreateWindow("Double Damage!");
+	glutCreateWindow("The Rolling Stars");
 
 	//Updated Keyboard Functions
 	glutKeyboardFunc(Keyboard_Down);
