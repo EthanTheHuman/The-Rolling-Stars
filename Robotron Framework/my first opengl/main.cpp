@@ -18,12 +18,16 @@
 #include "TextLabel.h"
 #include "CubeMap.h"
 #include "dependencies\FMOD\fmod.hpp"
+#include "CXBOXController.h"
 
 //Library Includes
 #include <Windows.h>
 #include <cassert>
 //#include <vld.h>
 #include <thread>
+
+
+
 
 // Namespace
 using namespace std;
@@ -107,6 +111,7 @@ void render()
 // Update Function
 void update()
 {
+
 	glutPostRedisplay();
 	//Updated Move Function
 	GameManager::GetInstance()->CurrentSceneClass()->MoveCharacter(KeyState);
