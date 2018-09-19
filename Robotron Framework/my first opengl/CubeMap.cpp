@@ -10,6 +10,7 @@ CubeMap::CubeMap(Camera * _Camera, GLuint _Program, char * _Top, char * _Bottom,
 	m_Program = _Program;
 	m_Camera = _Camera;
 
+	glUseProgram(m_Program);
 		//------------------------------------------------------------------------------------------------------------------------------------------
 		// Vertex Array Object
 		glGenVertexArrays(1, &vao);

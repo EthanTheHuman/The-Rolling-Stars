@@ -1,13 +1,15 @@
 #pragma once
 #include "Camera.h"
 #include "Sprite.h"
+#include "CXBOXController.h"
 #include <vector>
 
 enum SceneTransition {
 	NOTHING,
 	PREVIOUS,
 	NEXT,
-	TOMAIN
+	TOMAIN,
+	EXIT
 };
 
 class Scene
@@ -21,17 +23,11 @@ public:
 	virtual void Render();
 	virtual void MoveCharacter(unsigned char KeyState[255]);
 	virtual bool IsColliding(glm::vec3, glm::vec3, float, float);
-	virtual void ChangeNames(std::vector<std::string> _strings);
-	virtual void ChangeHostNames(std::vector<std::string> _strings);
-	virtual void MovePlayerOne(glm::vec3 _NewPos);
-	virtual void MoveNetworkPlayer(glm::vec3 _NewPos);
+	virtual void SetControlers(std::vector<CXBOXController*> Controllers);
 
 	Camera MyCamera;
 	GLuint MyProgram;
 	SceneTransition nextScene = NOTHING;
 	bool b_pauseMenu = false;
-	int Networkmode = 0;
-	bool ServerChosen = false;
-	bool GameStart = false;
 };
 

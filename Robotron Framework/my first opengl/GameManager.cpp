@@ -24,6 +24,7 @@ void GameManager::DestroyInstance()
 
 void GameManager::SwitchScene(int _Placement)
 {
+
 	CurrentScene = _Placement;
 	pScenes[CurrentScene]->Init();
 }
@@ -53,6 +54,9 @@ void GameManager::update()
 		CurrentScene = 0;
 		pScenes[CurrentScene]->Init();
 	}
+	if (pScenes[CurrentScene]->nextScene == EXIT) {
+		PostQuitMessage(0); 
+	}
 	if (pScenes[CurrentScene]->nextScene == NOTHING) {
 		//do NUTHING
 	}
@@ -65,9 +69,23 @@ Scene* GameManager::CurrentSceneClass()
 
 GameManager::GameManager()
 {
-	//MainMenu* newMainMenu = new MainMenu();
-	//pScenes.push_back(newMainMenu);
+	std::vector<CXBOXController*> Controllers;
+	CXBOXController* m_pCXboxController1 = new CXBOXController(1);
+	CXBOXController* m_pCXboxController2 = new CXBOXController(2);
+	CXBOXController* m_pCXboxController3 = new CXBOXController(3);
+	CXBOXController* m_pCXboxController4 = new CXBOXController(4);
+	Controllers.push_back(m_pCXboxController1);
+	Controllers.push_back(m_pCXboxController2);
+	Controllers.push_back(m_pCXboxController3);
+	Controllers.push_back(m_pCXboxController4);
+
+	MainMenu* newMainMenu = new MainMenu();
+	newMainMenu->SetControlers(Controllers);
+	pScenes.push_back(newMainMenu);
+
+
 	GameLevel* newGameLevel = new GameLevel();
+	newGameLevel->SetControlers(Controllers);
 	pScenes.push_back(newGameLevel);
 }
 

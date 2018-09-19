@@ -3,10 +3,12 @@
 
 // No MFC
 #define WIN32_LEAN_AND_MEAN
+#define INPUT_DEADZONE 8000
 
 // We need the Windows Header and the XInput Header
 #include<windows.h>
 #include <XInput.h>
+#include <iostream>
 
 // Now, the XInput Library
 // NOTE: COMMENT THIS OUT IF YOU ARE NOT USING
@@ -24,6 +26,7 @@ public:
 	XINPUT_STATE GetState();
 	bool IsConnected();
 	void Vibrate(int leftVal = 0, int rightVal = 0);
+	std::pair<float, float> GetInput();
 };
 
 #endif

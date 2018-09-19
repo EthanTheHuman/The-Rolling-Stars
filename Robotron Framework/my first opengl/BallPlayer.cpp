@@ -1,7 +1,4 @@
 #include "BallPlayer.h"
-#include "CXBOXController.h"
-
-CXBOXController* m_pCXboxController = new CXBOXController(1);
 
 BallPlayer::BallPlayer()
 {
@@ -11,7 +8,8 @@ BallPlayer::~BallPlayer()
 {
 
 }
-void BallPlayer::Init(char * _filename, Camera * _camera, GLuint _program) {
+void BallPlayer::Init(char * _filename, Camera * _camera, GLuint _program, CXBOXController* Controller) {
+	m_pCXboxController = Controller;
 	Sprite::Init( _filename, _camera, _program);
 	Sprite::SetScale({ 0.1, 0.1, 0 });
 }
@@ -23,52 +21,16 @@ void BallPlayer::render()
 
 void BallPlayer::MoveCharacter(unsigned char KeyState[255])
 {
-	if (m_pCXboxController->GetState().Gamepad.sThumbLX == -32768)
-	{
-		SpeedX += acceleration;
-
+	if (m_pCXboxController->IsConnected()) {
+		std::pair<float, float> XandY = m_pCXboxController->GetInput();
+		SpeedX -= XandY.first * acceleration;
+		SpeedY += XandY.second * acceleration;
 	}
-	if (m_pCXboxController->GetState().Gamepad.sThumbLX == 32767)
-	{
-		SpeedX -= acceleration;
-	}
-	if (m_pCXboxController->GetState().Gamepad.sThumbLY == 32767)
-	{
-		SpeedY += acceleration;
-	}
-	if (m_pCXboxController->GetState().Gamepad.sThumbLY == -32768)
-	{
-		SpeedY -= acceleration;
-	}
-
-	//Diagonal
-
-	if (m_pCXboxController->GetState().Gamepad.sThumbLX == -32768 && m_pCXboxController->GetState().Gamepad.sThumbLY == 32767)
-	{
-		SpeedX += acceleration;
-		SpeedY += acceleration;
-	}
-	if (m_pCXboxController->GetState().Gamepad.sThumbLX == 32767 && m_pCXboxController->GetState().Gamepad.sThumbLY == 32767)
-	{
-		SpeedX -= acceleration;
-		SpeedY += acceleration;
-	}
-	if (m_pCXboxController->GetState().Gamepad.sThumbLX == 32767 && m_pCXboxController->GetState().Gamepad.sThumbLY == -32767)
-	{
-		SpeedY += acceleration;
-		SpeedY -= acceleration;
-	}
-	if (m_pCXboxController->GetState().Gamepad.sThumbLX == -32768 && m_pCXboxController->GetState().Gamepad.sThumbLY == -32767)
-	{
-		SpeedX -= acceleration;
-		SpeedY -= acceleration;
-	}
-
-
 }
 
 void BallPlayer::UpdateCharater()
 {
+
 	if (SpeedX < friction && SpeedX > -friction) {
 		SpeedX = 0;
 	}

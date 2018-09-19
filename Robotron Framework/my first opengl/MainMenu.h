@@ -46,6 +46,7 @@ public:
 	void Render();
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
+	void SetControlers(std::vector<CXBOXController*> Controllers);
 
 private:
 	// List of objects
@@ -57,6 +58,9 @@ private:
 	std::vector<TextLabel*> hostList;
 	std::vector<TextLabel*> joinMenu;
 	std::vector<TextLabel*> lobbyMenu;
+
+	std::vector<CXBOXController*> XBoxControllers;
+
 	CubeMap * MySkybox;
 	ShaderLoader shaderloader;
 	Player * _Player;
@@ -74,5 +78,11 @@ private:
 	//menu stuff
 	int selection = 0;
 	Menus menu = MAIN;
-	TextLabel * TempLabel;
+	TextLabel* TempLable;
+
+	//Player ready up messages
+	TextLabel* Player1;
+	TextLabel* Player2;
+	TextLabel* Player3;
+	TextLabel* Player4;
 };

@@ -35,10 +35,13 @@ public:
 	void Render();
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
+	void SetControlers(std::vector<CXBOXController*> Controllers);
 
 	bool CheckCollision(BallPlayer * one, BallPlayer * two);
 
 private:
+
+	std::vector<CXBOXController*> XBoxControllers;
 
 	//Graphics stuff
 	Camera* MyCamera;
