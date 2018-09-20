@@ -120,6 +120,9 @@ void GameLevel::Update()
 void GameLevel::MoveCharacter(unsigned char KeyState[255])
 {
 	Balls[0]->MoveCharacter(KeyState);
+	Balls[1]->MoveCharacter(KeyState);
+	Balls[2]->MoveCharacter(KeyState);
+	Balls[3]->MoveCharacter(KeyState);
 }
 
 void GameLevel::SetControlers(std::vector<CXBOXController*> Controllers)
