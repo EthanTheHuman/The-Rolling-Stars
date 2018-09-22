@@ -5,15 +5,6 @@
 
 GameLevel::GameLevel()
 {
-	BallPlayer* Temp;
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
 }
 
 
@@ -24,22 +15,32 @@ GameLevel::~GameLevel()
 
 void GameLevel::Init()
 {
+	BallPlayer* Temp;
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	SpriteShader = shaderloader.CreateProgram("Shaders/Sprite.vs", "Shaders/Sprite.fs");
-	UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
-	TextShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
+	//UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
+	//TextShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
 
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
 
 	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
-	Balls[0]->ChangePosition({ -1,1 });
+	Balls[0]->ChangePosition({ -0.5,0.5 });
 	Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
-	Balls[1]->ChangePosition({ -1,-1 });
+	Balls[1]->ChangePosition({ -0.5,-0.5 });
 	Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
-	Balls[2]->ChangePosition({ 1,-1 });
+	Balls[2]->ChangePosition({ 0.5,-0.5 });
 	Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
-	Balls[3]->ChangePosition({ 1,1 });
+	Balls[3]->ChangePosition({ 0.5,0.5 });
 	
 }
 

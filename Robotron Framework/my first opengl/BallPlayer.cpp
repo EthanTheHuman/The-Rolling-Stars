@@ -37,7 +37,6 @@ void BallPlayer::UpdateCharater()
 	else {
 		if (SpeedX > 0) {
 			SpeedX -= friction;
-			//SpeedX = SpeedX / parafriction;
 		}
 		if (SpeedX < 0) {
 			SpeedX += friction;

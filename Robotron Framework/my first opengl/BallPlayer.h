@@ -19,8 +19,7 @@ public:
 	float mass = ColisionRadius * 10.f;
 private:
 	float friction = 0.0005;
-	float parafriction = 1.8;
-	float acceleration = 0.005;
+	float acceleration = 0.001;
 	CXBOXController* m_pCXboxController;
 };
 

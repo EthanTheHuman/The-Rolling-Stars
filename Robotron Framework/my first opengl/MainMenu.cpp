@@ -42,9 +42,6 @@ void MainMenu::Init()
 	Player4 = new TextLabel("Player 4", "Fonts/arial.ttf", glm::vec2(620, 560));
 	Player4->SetColor(glm::vec3(1.0f, 1.0f, 0.0f));
 
-
-
-
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
 	
 }
@@ -69,6 +66,13 @@ void MainMenu::Deconstruct()
 	nextScene = NOTHING;
 	menu = MAIN;
 	selection = 0;
+
+	delete Player1;
+	delete Player2;
+	delete Player3;
+	delete Player4;
+
+	delete Title;
 }
 
 void MainMenu::Render()

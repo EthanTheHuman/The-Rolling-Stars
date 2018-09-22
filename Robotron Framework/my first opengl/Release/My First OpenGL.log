@@ -1,15 +1,31 @@
-﻿  MainMenu.cpp
+﻿  BallPlayer.cpp
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
+  c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(21): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(22): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
+  GameLevel.cpp
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
+  c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(21): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(22): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(112): warning C4018: '<': signed/unsigned mismatch
+  GameManager.cpp
 c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
   c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
 c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(55): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(59): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(63): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(84): warning C4018: '<': signed/unsigned mismatch
-c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(111): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(14): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(21): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(22): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\brandon\documents\github\the-rolling-stars\robotron framework\my first opengl\ballplayer.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating code
-  1 of 964 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 967 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   My First OpenGL.vcxproj -> C:\Users\Brandon\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe
