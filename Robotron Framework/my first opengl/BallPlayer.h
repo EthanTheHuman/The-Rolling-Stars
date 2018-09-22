@@ -17,9 +17,10 @@ public:
 	float SpeedX;
 	float SpeedY;
 	float mass = ColisionRadius * 10.f;
+	bool Dead = false;
+	bool DeadY = false;
 private:
 	float friction = 0.0005;
 	float acceleration = 0.001;
 	CXBOXController* m_pCXboxController;
 };
-

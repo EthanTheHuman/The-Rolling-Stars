@@ -170,6 +170,9 @@
     <ClInclude Include="CXBOXController.h">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
+    <ClInclude Include="EllipseCollisionTest.h">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\ModelBasic.fs">

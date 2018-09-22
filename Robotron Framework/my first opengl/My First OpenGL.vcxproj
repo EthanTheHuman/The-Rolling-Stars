@@ -159,6 +159,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CubeMap.h" />
     <ClInclude Include="CXBOXController.h" />
+    <ClInclude Include="EllipseCollisionTest.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="GameManager.h" />

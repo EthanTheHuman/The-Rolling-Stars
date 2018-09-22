@@ -38,14 +38,13 @@ void GameLevel::Init()
 	Arena->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
 
 	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
-	Balls[0]->ChangePosition({ -0.5,0.5 });
+	Balls[0]->ChangePosition({ -0.5, 0.5 });
 	Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
-	Balls[1]->ChangePosition({ -0.5,-0.5 });
+	Balls[1]->ChangePosition({ -0.5, -0.5 });
 	Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
-	Balls[2]->ChangePosition({ 0.5,-0.5 });
+	Balls[2]->ChangePosition({ 0.5, -0.5 });
 	Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
-	Balls[3]->ChangePosition({ 0.5,0.5 });
-	
+	Balls[3]->ChangePosition({ 0.5, 0.5 });
 }
 
 void GameLevel::Deconstruct()
@@ -59,10 +58,19 @@ void GameLevel::Render()
 	glFrontFace(GL_CCW);
 
 	MySkybox->Render();
+
+	for (auto Ball : Balls) {
+		if (Ball->DeadY) {
+			Ball->render();
+		}
+	}
+
 	Arena->render();
 
 	for (auto Ball : Balls) {
-		Ball->render();
+		if (!Ball->DeadY) {
+			Ball->render();
+		}
 	}
 }
 
@@ -70,7 +78,7 @@ void GameLevel::Update()
 {
 	for (auto &Target : Balls) {
 		for (auto &Ball : Balls) {
-			if (Ball != Target) {
+			if (Ball != Target && !Ball->Dead && !Target->Dead) {
 				if (CheckCollision(Ball, Target)) {
 
 					CollidingPairs.push_back({ Ball, Target });
@@ -117,6 +125,20 @@ void GameLevel::Update()
 	for (int I = 0; I < CollidingPairs.size(); I++) {
 		CollidingPairs.pop_back();
 	}
+
+	EllipseCollisionTest ArenaCollision(10);
+
+	for (auto Ball : Balls) {
+		if (!Ball->Dead) {
+			if (!ArenaCollision.collide(ArenaX, ArenaY, ArenaH, ArenaW, Ball->Xpos, Ball->Ypos, Ball->ColisionRadius)) {
+				Ball->Dead = true;
+				if (Ball->Ypos > -0.5) {
+					Ball->DeadY = true;
+				}
+			}
+		}
+	}
+
 
 	for (auto Ball : Balls) {
 		Ball->UpdateCharater();

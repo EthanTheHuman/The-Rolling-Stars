@@ -79,9 +79,9 @@ GameManager::GameManager()
 	Controllers.push_back(m_pCXboxController3);
 	Controllers.push_back(m_pCXboxController4);
 
-	MainMenu* newMainMenu = new MainMenu();
-	newMainMenu->SetControlers(Controllers);
-	pScenes.push_back(newMainMenu);
+	//MainMenu* newMainMenu = new MainMenu();
+	//newMainMenu->SetControlers(Controllers);
+	//pScenes.push_back(newMainMenu);
 
 
 	GameLevel* newGameLevel = new GameLevel();

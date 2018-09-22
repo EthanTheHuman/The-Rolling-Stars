@@ -21,10 +21,15 @@ void BallPlayer::render()
 
 void BallPlayer::MoveCharacter(unsigned char KeyState[255])
 {
-	if (m_pCXboxController->IsConnected()) {
-		std::pair<float, float> XandY = m_pCXboxController->GetInput();
-		SpeedX -= XandY.first * acceleration;
-		SpeedY += XandY.second * acceleration;
+	if (!Dead) {
+		if (m_pCXboxController->IsConnected()) {
+			std::pair<float, float> XandY = m_pCXboxController->GetInput();
+			SpeedX -= XandY.first * acceleration;
+			SpeedY += XandY.second * acceleration;
+		}
+	}
+	else {
+		SpeedY -= acceleration;
 	}
 }
 

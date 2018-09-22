@@ -20,6 +20,7 @@
 #include "Sprite.h"
 #include "CubeMap.h"
 #include "Player.h"
+#include "EllipseCollisionTest.h"
 
 
 class GameLevel :
@@ -60,5 +61,10 @@ private:
 	std::vector <BallPlayer*> Balls;
 	std::vector <pair<BallPlayer*, BallPlayer*>> CollidingPairs;
 	Sprite* Arena;
-};
 
+	//Arena Collision
+	double ArenaX = 0.0;
+	double ArenaY = -0.5;
+	double ArenaW = 1;
+	double ArenaH = 2;
+};
