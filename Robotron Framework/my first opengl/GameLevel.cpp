@@ -33,6 +33,10 @@ void GameLevel::Init()
 
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
 
+	Arena = new Sprite("Textures/Arena.png", MyCamera, SpriteShader);
+	Arena->AddScale(glm::vec3(2, 2, 0.0f));
+	Arena->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
+
 	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
 	Balls[0]->ChangePosition({ -0.5,0.5 });
 	Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
@@ -55,6 +59,7 @@ void GameLevel::Render()
 	glFrontFace(GL_CCW);
 
 	MySkybox->Render();
+	Arena->render();
 
 	for (auto Ball : Balls) {
 		Ball->render();
@@ -121,6 +126,9 @@ void GameLevel::Update()
 void GameLevel::MoveCharacter(unsigned char KeyState[255])
 {
 	Balls[0]->MoveCharacter(KeyState);
+	Balls[1]->MoveCharacter(KeyState);
+	Balls[2]->MoveCharacter(KeyState);
+	Balls[3]->MoveCharacter(KeyState);
 }
 
 void GameLevel::SetControlers(std::vector<CXBOXController*> Controllers)

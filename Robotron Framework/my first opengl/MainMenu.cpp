@@ -13,8 +13,8 @@ void MainMenu::Init()
 	UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
 
-	Title = new UISprite("Textures/Cubemap/Title.png", MyCamera, UISpriteShader);
-	Title->SetScale({ 0.3, 0.3, 0.3 });
+	Title = new UISprite("Textures/TheLogo.png", MyCamera, UISpriteShader);
+	Title->SetScale({ 0.6, 0.6, 0.0 });
 	Title->SetTranslation({ 0, 0.5, 0 });
 
 	/*Controls = new UISprite("Textures/Controls.png", MyCamera, UISpriteShader);
