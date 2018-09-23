@@ -39,6 +39,7 @@ public:
 	void SetControlers(std::vector<CXBOXController*> Controllers);
 
 	bool CheckCollision(BallPlayer * one, BallPlayer * two);
+	void ResetBalls();
 
 private:
 

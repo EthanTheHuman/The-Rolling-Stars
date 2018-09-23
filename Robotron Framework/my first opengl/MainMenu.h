@@ -53,32 +53,20 @@ private:
 	Camera * MyCamera;
 	std::vector<TextLabel*> mainMenu;
 	std::vector<TextLabel*> playMenu;
-	std::vector<TextLabel*> coopMenu;
-	std::vector<TextLabel*> hostMenu;
-	std::vector<TextLabel*> hostList;
-	std::vector<TextLabel*> joinMenu;
-	std::vector<TextLabel*> lobbyMenu;
 
 	std::vector<CXBOXController*> XBoxControllers;
 
 	CubeMap * MySkybox;
 	ShaderLoader shaderloader;
-	Player * _Player;
 	UISprite * Title;
-	UISprite * Controls;
 
 	// List of Shaders
-	GLuint SpriteShader;
 	GLuint UISpriteShader;
-	GLuint ModelBasicShader;
-	GLuint AmbientShader;
-	GLuint TextShader;
 	GLuint SkyboxShader;
 
 	//menu stuff
 	int selection = 0;
 	Menus menu = MAIN;
-	TextLabel* TempLable;
 
 	//Player ready up messages
 	TextLabel* Player1;

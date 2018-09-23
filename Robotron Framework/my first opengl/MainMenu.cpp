@@ -22,6 +22,7 @@ void MainMenu::Init()
 	Controls->SetTranslation({ 0, 0, 0 });*/
 
 	//Play Button
+	TextLabel * TempLable;
 	TempLable = new TextLabel("PLAY", "Fonts/arial.ttf", glm::vec2(332, 300));
 	mainMenu.push_back(TempLable);
 
@@ -57,11 +58,6 @@ void MainMenu::Deconstruct()
 		delete playMenu[i];
 	}
 	playMenu.clear();
-	for (int i = 0; i < coopMenu.size(); i++) {
-		delete coopMenu[i];
-	}
-	coopMenu.clear();
-	delete _Player;
 	delete MySkybox;
 	nextScene = NOTHING;
 	menu = MAIN;
@@ -176,6 +172,7 @@ void MainMenu::Update()
 
 MainMenu::~MainMenu()
 {
+
 }
 
 void MainMenu::MoveCharacter(unsigned char KeyState[255]) {

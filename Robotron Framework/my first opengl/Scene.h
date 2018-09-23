@@ -25,8 +25,6 @@ public:
 	virtual bool IsColliding(glm::vec3, glm::vec3, float, float);
 	virtual void SetControlers(std::vector<CXBOXController*> Controllers);
 
-	Camera MyCamera;
-	GLuint MyProgram;
 	SceneTransition nextScene = NOTHING;
 	bool b_pauseMenu = false;
 };

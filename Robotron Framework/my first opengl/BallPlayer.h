@@ -19,6 +19,7 @@ public:
 	float mass = ColisionRadius * 10.f;
 	bool Dead = false;
 	bool DeadY = false;
+	int wins = 0;
 private:
 	float friction = 0.0005;
 	float acceleration = 0.001;
