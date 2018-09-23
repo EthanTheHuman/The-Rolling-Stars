@@ -37,10 +37,10 @@ void MainMenu::Init()
 	Player1->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
 
 	Player2 = new TextLabel("Player 2", "Fonts/arial.ttf", glm::vec2(620, 10), TextLableShader);
-	Player2->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
+	Player2->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
 
 	Player3 = new TextLabel("Player 3", "Fonts/arial.ttf", glm::vec2(0, 560), TextLableShader);
-	Player3->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
+	Player3->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
 
 	Player4 = new TextLabel("Player 4", "Fonts/arial.ttf", glm::vec2(620, 560), TextLableShader);
 	Player4->SetColor(glm::vec3(1.0f, 1.0f, 0.0f));

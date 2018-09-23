@@ -46,13 +46,13 @@ void GameLevel::Init()
 	Balls[3]->ChangePosition({ 0.5, 0.0 });
 
 	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(0.0f, 0.0f), TextLableShader);
-	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(620.0f, 10.0f), TextLableShader);
+	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(765.0f, 10.0f), TextLableShader);
 	Player3 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(0.0f, 560.0f), TextLableShader);
-	Player4 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(620.0f, 560.0f), TextLableShader);
+	Player4 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(765.0f, 560.0f), TextLableShader);
 
 	Player1->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
-	Player2->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
-	Player3->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
+	Player2->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
+	Player3->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
 	Player4->SetColor(glm::vec3(1.0f, 1.0f, 0.0f));
 
 
