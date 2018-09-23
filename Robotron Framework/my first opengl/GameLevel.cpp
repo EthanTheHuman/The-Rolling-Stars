@@ -55,6 +55,7 @@ void GameLevel::Deconstruct()
 	Balls.clear();
 	delete Arena;
 	delete MySkybox;
+	nextScene = NOTHING;
 }
 
 void GameLevel::Render()
