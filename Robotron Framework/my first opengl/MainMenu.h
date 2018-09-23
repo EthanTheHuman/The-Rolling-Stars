@@ -63,6 +63,7 @@ private:
 	// List of Shaders
 	GLuint UISpriteShader;
 	GLuint SkyboxShader;
+	GLuint TextLableShader;
 
 	//menu stuff
 	int selection = 0;

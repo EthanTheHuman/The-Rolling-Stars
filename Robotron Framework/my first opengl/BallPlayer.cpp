@@ -60,44 +60,29 @@ void BallPlayer::UpdateCharater()
 	}
 
 	//Boundaries
-	if (this->Dead)
-	{
-
-
-		if (Xpos + SpeedX < -2.25f)
-		{
+	if (this->Dead) {
+		if (Xpos + SpeedX < -2.25f) {
 			Sprite::SetTranslation({ Xpos, Ypos, 0 });
 			SpeedX = 0;
 			SpeedY = 0;
-
-			//std::cout << "Right Side" << std::endl;
 			return;
 		}
-		if (Xpos + SpeedX > 2.25f)
-		{
+		if (Xpos + SpeedX > 2.25f) {
 			Sprite::SetTranslation({ Xpos, Ypos, 0 });
 			SpeedX = 0;
 			SpeedY = 0;
-
-			//std::cout << "Left Side" << std::endl;
 			return;
 		}
-		if (Ypos + SpeedY < -1.75f)
-		{
+		if (Ypos + SpeedY < -2.0f) {
 			Sprite::SetTranslation({ Xpos, Ypos, 0 });
 			SpeedX = 0;
 			SpeedY = 0;
-
-			//std::cout << "Bottom Side" << std::endl;
 			return;
 		}
-		if (Ypos + SpeedY > 1.75f)
-		{
+		if (Ypos + SpeedY > 1.75f) {
 			Sprite::SetTranslation({ Xpos, Ypos, 0 });
 			SpeedX = 0;
 			SpeedY = 0;
-
-			//std::cout << "Top Side" << std::endl;
 			return;
 		}
 	}

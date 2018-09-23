@@ -1,15 +1,13 @@
 #include "TextLabel.h"
 
-TextLabel::TextLabel(std::string newText, std::string newFont, glm::vec2 pos)
+TextLabel::TextLabel(std::string newText, std::string newFont, glm::vec2 pos, GLuint Program)
 {
-	static ShaderLoader shaderLoader;
-
 	text = newText;
 	color = glm::vec3(1.0, 1.0, 1.0);
 	scale = 1.0f;
 	SetPosition(pos);
 
-	program = shaderLoader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
+	program = Program;
 	glUseProgram(program);
 
 	glUniform3f(glGetUniformLocation(program, "textColor"), 255, 255, 255);
@@ -92,8 +90,6 @@ void TextLabel::Render()
 {
 	glm::vec2 textPos = position;
 
-	glCullFace(GL_BACK);
-	glFrontFace(GL_CW);
 	// Enable blending
 	glCullFace(GL_BACK); // Cull the Back faces
 	glFrontFace(GL_CW); // Front face is Clockwise order

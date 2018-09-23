@@ -27,14 +27,13 @@ void GameLevel::Init()
 
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	SpriteShader = shaderloader.CreateProgram("Shaders/Sprite.vs", "Shaders/Sprite.fs");
-	//UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
-	//TextShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
+	TextShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
 
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
 
 	Arena = new Sprite("Textures/Arena.png", MyCamera, SpriteShader);
-	Arena->AddScale(glm::vec3(2, 2, 0.0f));
+	Arena->AddScale(glm::vec3(2, 2, 0));
 	Arena->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
 
 	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
@@ -49,7 +48,13 @@ void GameLevel::Init()
 
 void GameLevel::Deconstruct()
 {
-
+	delete MyCamera;
+	for (int i = 0; i < Balls.size(); i++) {
+		delete Balls[i];
+	}
+	Balls.clear();
+	delete Arena;
+	delete MySkybox;
 }
 
 void GameLevel::Render()
@@ -82,9 +87,7 @@ void GameLevel::Update()
 			alive++;
 		}
 	}
-
 	if (alive > 1) {
-
 		for (auto &Target : Balls) {
 			for (auto &Ball : Balls) {
 				if (Ball != Target && !Ball->Dead && !Target->Dead) {
@@ -104,7 +107,6 @@ void GameLevel::Update()
 				}
 			}
 		}
-
 		for (auto c : CollidingPairs) {
 			BallPlayer* B1 = c.first;
 			BallPlayer* B2 = c.second;
@@ -147,8 +149,6 @@ void GameLevel::Update()
 				}
 			}
 		}
-
-
 		for (auto Ball : Balls) {
 			Ball->UpdateCharater();
 		}
@@ -158,7 +158,7 @@ void GameLevel::Update()
 			if (!Ball->Dead) {
 				Ball->wins++;
 				if (Ball->wins == 3) {
-					//Ball wins
+					nextScene = TOMAIN;
 				}
 				else {
 					ResetBalls();
@@ -188,10 +188,10 @@ bool GameLevel::CheckCollision(BallPlayer *one, BallPlayer* two) // AABB - Circl
 
 void GameLevel::ResetBalls()
 {
-	Balls[0]->ChangePosition({ -0.5, 0.5 });
-	Balls[1]->ChangePosition({ -0.5, -0.5 });
-	Balls[2]->ChangePosition({ 0.5, -0.5 });
-	Balls[3]->ChangePosition({ 0.5, 0.5 });
+	Balls[0]->ChangePosition({ -0.5, 0.0 });
+	Balls[1]->ChangePosition({ -0.5, -1.0 });
+	Balls[2]->ChangePosition({ 0.5, -1.0 });
+	Balls[3]->ChangePosition({ 0.5, 0.0 });
 
 	for (auto Ball : Balls) {
 		Ball->Dead = false;

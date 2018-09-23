@@ -159,6 +159,7 @@ Sprite::~Sprite()
 
 void Sprite::render()
 {
+	glEnable(GL_BLEND);
 	glUseProgram(m_Program);
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -169,6 +170,7 @@ void Sprite::render()
 	glBindVertexArray(vao);			// Bind VAO
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);			// Unbind VAO
+	glDisable(GL_BLEND);
 }
 
 void Sprite::RefreshMVP()

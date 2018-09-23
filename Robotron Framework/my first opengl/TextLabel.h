@@ -28,7 +28,7 @@ struct Character
 
 class TextLabel {
 public:
-	TextLabel(std::string text, std::string font, glm::vec2 pos);
+	TextLabel(std::string text, std::string font, glm::vec2 pos, GLuint Program);
 	~TextLabel();
 
 	void Render();
@@ -45,5 +45,4 @@ private:
 
 	GLuint VAO, VBO, program;
 	std::map<GLchar, Character> Characters;
-	static ShaderLoader shaderLoader;
 };
