@@ -27,8 +27,8 @@ void GameLevel::Init()
 
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	SpriteShader = shaderloader.CreateProgram("Shaders/Sprite.vs", "Shaders/Sprite.fs");
-	TextShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
+	TextLableShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");
 
@@ -44,6 +44,18 @@ void GameLevel::Init()
 	Balls[2]->ChangePosition({ 0.5, -1.0 });
 	Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
 	Balls[3]->ChangePosition({ 0.5, 0.0 });
+
+	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(0.0f, 0.0f), TextLableShader);
+	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(620.0f, 10.0f), TextLableShader);
+	Player3 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(0.0f, 560.0f), TextLableShader);
+	Player4 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(620.0f, 560.0f), TextLableShader);
+
+	Player1->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
+	Player2->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
+	Player3->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
+	Player4->SetColor(glm::vec3(1.0f, 1.0f, 0.0f));
+
+
 }
 
 void GameLevel::Deconstruct()
@@ -73,11 +85,18 @@ void GameLevel::Render()
 
 	Arena->render();
 
+	Player1->Render();
+	Player2->Render();
+	Player3->Render();
+	Player4->Render();
+
 	for (auto Ball : Balls) {
 		if (!Ball->DeadY) {
 			Ball->render();
 		}
 	}
+
+	
 }
 
 void GameLevel::Update()
@@ -167,6 +186,24 @@ void GameLevel::Update()
 			}
 		}
 	}
+
+	std::ostringstream P1iConvert;
+	std::ostringstream P2iConvert;
+	std::ostringstream P3iConvert;
+	std::ostringstream P4iConvert;
+
+	P1iConvert << Balls[0]->wins;
+	Player1->SetText(P1iConvert.str());
+
+	P2iConvert << Balls[1]->wins;
+	Player2->SetText(P2iConvert.str());
+
+	P3iConvert << Balls[2]->wins;
+	Player3->SetText(P3iConvert.str());
+
+	P4iConvert << Balls[3]->wins;
+	Player4->SetText(P4iConvert.str());
+
 }
 
 void GameLevel::MoveCharacter(unsigned char KeyState[255])

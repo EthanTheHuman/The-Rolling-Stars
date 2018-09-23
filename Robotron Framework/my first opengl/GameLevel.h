@@ -21,6 +21,7 @@
 #include "CubeMap.h"
 #include "Player.h"
 #include "EllipseCollisionTest.h"
+#include "TextLabel.h"
 
 
 class GameLevel :
@@ -55,13 +56,19 @@ private:
 	GLuint UISpriteShader;
 	GLuint ModelBasicShader;
 	GLuint AmbientShader;
-	GLuint TextShader;
+	GLuint TextLableShader;
 	GLuint SkyboxShader;
 
 	//Game Objects
 	std::vector <BallPlayer*> Balls;
 	std::vector <pair<BallPlayer*, BallPlayer*>> CollidingPairs;
 	Sprite* Arena;
+
+	//HUD
+	TextLabel* Player1;
+	TextLabel* Player2;
+	TextLabel* Player3;
+	TextLabel* Player4;
 
 	//Arena Collision
 	double ArenaX = 0.0;
