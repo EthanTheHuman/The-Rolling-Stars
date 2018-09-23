@@ -180,11 +180,9 @@ void GameLevel::Update()
 				if (Ball->wins == 3) {
 					nextScene = TOMAIN;
 				}
-				else {
-					ResetBalls();
-				}
 			}
 		}
+		ResetBalls();
 	}
 
 	std::ostringstream P1iConvert;
