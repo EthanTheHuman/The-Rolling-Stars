@@ -52,7 +52,8 @@ private:
 	// List of objects
 	Camera * MyCamera;
 	std::vector<TextLabel*> mainMenu;
-	std::vector<TextLabel*> playMenu;
+	std::vector<TextLabel*> settings;
+	std::vector<TextLabel*> credits;
 
 	std::vector<CXBOXController*> XBoxControllers;
 
@@ -68,6 +69,10 @@ private:
 	//menu stuff
 	int selection = 0;
 	Menus menu = MAIN;
+
+	bool IsMainMenu = true;
+	bool IsSettings = false;
+	bool IsCredits = false;
 
 	//Player ready up messages
 	TextLabel* Player1;

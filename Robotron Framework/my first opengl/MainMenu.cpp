@@ -32,6 +32,7 @@ void MainMenu::Init()
 	TempLable = new TextLabel("Exit", "Fonts/arial.ttf", glm::vec2(350, 200), TextLableShader);
 	mainMenu.push_back(TempLable);
 
+
 	//Player connected messages
 	Player1 = new TextLabel("Player 1", "Fonts/arial.ttf", glm::vec2(0, 10), TextLableShader);
 	Player1->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
@@ -56,14 +57,22 @@ void MainMenu::Deconstruct()
 		delete mainMenu[i];
 	}
 	mainMenu.clear();
-	for (int i = 0; i < playMenu.size(); i++) {
-		delete playMenu[i];
+	for (int i = 0; i < settings.size(); i++) {
+		delete settings[i];
 	}
-	playMenu.clear();
+	settings.clear();
+	for (int i = 0; i < credits.size(); i++) {
+		delete credits[i];
+	}
+	credits.clear();
 	delete MySkybox;
 	nextScene = NOTHING;
 	menu = MAIN;
 	selection = 0;
+
+	 IsMainMenu = true;
+	 IsSettings = false;
+	 IsCredits = false;
 
 	delete Player1;
 	delete Player2;
@@ -83,10 +92,15 @@ void MainMenu::Render()
 	Title->render();
 
 	//Textlable
-	for (int i = 0; i < mainMenu.size(); i++)
+	if (IsMainMenu)
 	{
-		mainMenu[i]->Render();
+		for (int i = 0; i < mainMenu.size(); i++)
+		{
+			mainMenu[i]->Render();
+		}
 	}
+
+	
 
 	if (XBoxControllers[0]->IsConnected())
 	{
