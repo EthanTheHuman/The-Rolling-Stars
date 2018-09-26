@@ -7,7 +7,7 @@
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 
-#include "ShaderLoader.h";
+#include "ShaderLoader.h"
 #include "Utils2.h"
 
 #include <ft2build.h>

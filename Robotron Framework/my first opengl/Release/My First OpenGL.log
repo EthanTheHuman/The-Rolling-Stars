@@ -1,15 +1,14 @@
 ﻿  MainMenu.cpp
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
-  c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\textlabel.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(69): warning C4018: '<': signed/unsigned mismatch
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(73): warning C4018: '<': signed/unsigned mismatch
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(77): warning C4018: '<': signed/unsigned mismatch
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(111): warning C4018: '<': signed/unsigned mismatch
-c:\users\seaba\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(141): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
+  c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
+c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(78): warning C4018: '<': signed/unsigned mismatch
+c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(82): warning C4018: '<': signed/unsigned mismatch
+c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(86): warning C4018: '<': signed/unsigned mismatch
+c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(119): warning C4018: '<': signed/unsigned mismatch
+c:\users\ethan\dropbox\uni\year 2\semester 2\due excercises and projects\escape room\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(149): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Generating code
   1 of 947 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    13 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  My First OpenGL.vcxproj -> C:\Users\seaba\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe
+  My First OpenGL.vcxproj -> C:\Users\Ethan\Dropbox\Uni\Year 2\Semester 2\Due Excercises and Projects\Escape Room\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe

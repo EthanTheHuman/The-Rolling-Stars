@@ -3,6 +3,14 @@
 //pointers
 GameManager* m_pGameManager = GameManager::GetInstance();
 
+enum MenuStates
+{
+	MainMenues = 0,
+	Controls,
+	Credits
+};
+
+MenuStates CurrentState = MainMenues;
 
 MainMenu::MainMenu()
 {
@@ -10,6 +18,7 @@ MainMenu::MainMenu()
 
 void MainMenu::Init()
 {
+	CurrentState = MainMenues;
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
@@ -83,9 +92,7 @@ void MainMenu::Deconstruct()
 	menu = MAIN;
 	selection = 0;
 
-	 IsMainMenu = true;
-	 IsSettings = false;
-	 IsCredits = false;
+	CurrentState = MainMenues;
 
 	delete Player1;
 	delete Player2;
@@ -102,17 +109,27 @@ void MainMenu::Render()
 
 	//Background
 	MySkybox->Render();
-	Title->render();
-	Dpad->render();
+
 
 	//Textlable
-	if (IsMainMenu)
+	if (CurrentState == MainMenues)
 	{
+		Title->render();
+		Dpad->render();
 		for (int i = 0; i < mainMenu.size(); i++)
 		{
 			mainMenu[i]->Render();
 		}
 	}
+	else if (CurrentState == Controls)
+	{
+		// Render Controls menu here
+	}
+	else
+	{
+		// Render Credits menu here
+	}
+
 
 	
 
@@ -149,47 +166,122 @@ void MainMenu::Update()
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_UP)
 	{
 		//UP
-		std::cout << "Dpad Up" << std::endl;
-		if (selection == 1)
+		if (CurrentState == MainMenues)
 		{
-			selection--;
+			std::cout << "Dpad Up" << std::endl;
+			//0
+			selection = 0;
+		}
+		else if (CurrentState == Controls)
+		{
+			// Controls command for up
+		}
+		else
+		{
+			// Credits command for up
 		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_DOWN)
 	{
 		//DOWN
-		std::cout << "Dpad Down" << std::endl;
-		if (selection == 0)
+		if (CurrentState == MainMenues)
 		{
-			selection++;
+			std::cout << "Dpad Down" << std::endl;
+			//1
+			selection = 1;
+		}
+		else if (CurrentState == Controls)
+		{
+			// Controls command for down
+		}
+		else
+		{
+			// Credits command for down
 		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_LEFT)
 	{
 		//LEFT
-		std::cout << "Dpad Left" << std::endl;
+		if (CurrentState == MainMenues)
+		{
+			std::cout << "Dpad Left" << std::endl;
+			//2
+			selection = 2;
+		}
+		else if (CurrentState == Controls)
+		{
+			// Controls command for left
+		}
+		else
+		{
+			// Credits command for left
+		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
 		//RIGHT
-		std::cout << "Dpad Right" << std::endl;
+		if (CurrentState == MainMenues)
+		{
+			std::cout << "Dpad Right" << std::endl;
+			//3
+			selection = 3;
+		}
+		else if (CurrentState == Controls)
+		{
+			// Controls command for right
+		}
+		else
+		{
+			// Credits command for right
+		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_A)
 	{
 		//A
 		std::cout << "Gamepad A" << std::endl;
 		
-		//Play
-		if (selection == 0)
+		if (CurrentState == MainMenues)
 		{
-			nextScene = NEXT;
-				
-		}
+			//Play
+			if (selection == 0)
+			{
+				nextScene = NEXT;
 
-		//Exit
-		if (selection == 1)
+			}
+
+			//Exit
+			if (selection == 1)
+			{
+				nextScene = EXIT;
+			}
+
+			if (selection == 1)
+			{
+				CurrentState = Controls;
+			}
+
+			if (selection == 1)
+			{
+				CurrentState = Credits;
+			}
+		}
+	}
+
+	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_B)
+	{
+		if (CurrentState == MainMenues)
 		{
 			nextScene = EXIT;
+		}
+		else if (CurrentState == Controls)
+		{
+			// Controls command for B
+			CurrentState = MainMenues;
+		}
+		else
+		{
+			// Credits command for B
+			CurrentState = MainMenues;
 		}
 	}
 
@@ -197,12 +289,32 @@ void MainMenu::Update()
 	{
 		mainMenu[0]->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
 		mainMenu[1]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[2]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[3]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 	}
 
 	if (selection == 1)
 	{
-		mainMenu[1]->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
 		mainMenu[0]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[1]->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
+		mainMenu[2]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[3]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+	}
+
+	if (selection == 2)
+	{
+		mainMenu[0]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[1]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[2]->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
+		mainMenu[3]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+	}
+
+	if (selection == 3)
+	{
+		mainMenu[0]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[1]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[2]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+		mainMenu[3]->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
 	}
 }
 
