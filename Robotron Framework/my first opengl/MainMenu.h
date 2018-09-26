@@ -52,7 +52,7 @@ private:
 	// List of objects
 	Camera * MyCamera;
 	std::vector<TextLabel*> mainMenu;
-	std::vector<TextLabel*> settings;
+	std::vector<TextLabel*> controls;
 	std::vector<TextLabel*> credits;
 
 	std::vector<CXBOXController*> XBoxControllers;
@@ -60,6 +60,7 @@ private:
 	CubeMap * MySkybox;
 	ShaderLoader shaderloader;
 	UISprite * Title;
+	UISprite * Dpad;
 
 	// List of Shaders
 	GLuint UISpriteShader;

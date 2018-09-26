@@ -19,26 +19,31 @@ void MainMenu::Init()
 	Title->SetScale({ 0.9, 0.9, 0.0 });
 	Title->SetTranslation({ 0, 0.5, 0 });
 
+	Dpad = new UISprite("Textures/Dpad.png", MyCamera, UISpriteShader);
+	Dpad->SetScale({ 0.2, 0.2, 0.0 });
+	Dpad->SetTranslation({ 0, -0.23, 0 });
+
 	/*Controls = new UISprite("Textures/Controls.png", MyCamera, UISpriteShader);
 	Controls->SetScale({ 1, 1, 1 });
 	Controls->SetTranslation({ 0, 0, 0 });*/
 
 	//Play Button
 	TextLabel * TempLable;
-	TempLable = new TextLabel("PLAY", "Fonts/arial.ttf", glm::vec2(332, 300), TextLableShader);
-	mainMenu.push_back(TempLable);
-
-	//Controls Button
-	TempLable = new TextLabel("CONTROLS", "Fonts/arial.ttf", glm::vec2(263, 230), TextLableShader);
-	mainMenu.push_back(TempLable);
-
-	//Credits Button
-	TempLable = new TextLabel("CREDITS", "Fonts/arial.ttf", glm::vec2(287, 160), TextLableShader);
+	TempLable = new TextLabel("PLAY", "Fonts/arial.ttf", glm::vec2(342, 300), TextLableShader);
 	mainMenu.push_back(TempLable);
 
 	//Exit Button
-	TempLable = new TextLabel("EXIT", "Fonts/arial.ttf", glm::vec2(341, 65), TextLableShader);
+	TempLable = new TextLabel("EXIT", "Fonts/arial.ttf", glm::vec2(345, 135), TextLableShader);
 	mainMenu.push_back(TempLable);
+
+	//Controls Button
+	TempLable = new TextLabel("CONTROLS", "Fonts/arial.ttf", glm::vec2(60, 215), TextLableShader);
+	mainMenu.push_back(TempLable);
+
+	//Credits Button
+	TempLable = new TextLabel("CREDITS", "Fonts/arial.ttf", glm::vec2(470, 215), TextLableShader);
+	mainMenu.push_back(TempLable);
+
 
 
 	//Player connected messages
@@ -65,10 +70,10 @@ void MainMenu::Deconstruct()
 		delete mainMenu[i];
 	}
 	mainMenu.clear();
-	for (int i = 0; i < settings.size(); i++) {
-		delete settings[i];
+	for (int i = 0; i < controls.size(); i++) {
+		delete controls[i];
 	}
-	settings.clear();
+	controls.clear();
 	for (int i = 0; i < credits.size(); i++) {
 		delete credits[i];
 	}
@@ -98,6 +103,7 @@ void MainMenu::Render()
 	//Background
 	MySkybox->Render();
 	Title->render();
+	Dpad->render();
 
 	//Textlable
 	if (IsMainMenu)
@@ -158,6 +164,16 @@ void MainMenu::Update()
 			selection++;
 		}
 	}
+	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_LEFT)
+	{
+		//LEFT
+		std::cout << "Dpad Left" << std::endl;
+	}
+	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_RIGHT)
+	{
+		//RIGHT
+		std::cout << "Dpad Right" << std::endl;
+	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_A)
 	{
 		//A
@@ -174,7 +190,6 @@ void MainMenu::Update()
 		if (selection == 1)
 		{
 			nextScene = EXIT;
-
 		}
 	}
 
@@ -189,9 +204,6 @@ void MainMenu::Update()
 		mainMenu[1]->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
 		mainMenu[0]->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 	}
-
-
-
 }
 
 MainMenu::~MainMenu()
