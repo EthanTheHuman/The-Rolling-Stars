@@ -16,7 +16,7 @@ void MainMenu::Init()
 	TextLableShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 
 	Title = new UISprite("Textures/TheLogo.png", MyCamera, UISpriteShader);
-	Title->SetScale({ 0.6, 0.6, 0.0 });
+	Title->SetScale({ 0.9, 0.9, 0.0 });
 	Title->SetTranslation({ 0, 0.5, 0 });
 
 	/*Controls = new UISprite("Textures/Controls.png", MyCamera, UISpriteShader);
@@ -28,8 +28,16 @@ void MainMenu::Init()
 	TempLable = new TextLabel("PLAY", "Fonts/arial.ttf", glm::vec2(332, 300), TextLableShader);
 	mainMenu.push_back(TempLable);
 
+	//Controls Button
+	TempLable = new TextLabel("CONTROLS", "Fonts/arial.ttf", glm::vec2(263, 230), TextLableShader);
+	mainMenu.push_back(TempLable);
+
+	//Credits Button
+	TempLable = new TextLabel("CREDITS", "Fonts/arial.ttf", glm::vec2(287, 160), TextLableShader);
+	mainMenu.push_back(TempLable);
+
 	//Exit Button
-	TempLable = new TextLabel("Exit", "Fonts/arial.ttf", glm::vec2(350, 200), TextLableShader);
+	TempLable = new TextLabel("EXIT", "Fonts/arial.ttf", glm::vec2(341, 65), TextLableShader);
 	mainMenu.push_back(TempLable);
 
 
