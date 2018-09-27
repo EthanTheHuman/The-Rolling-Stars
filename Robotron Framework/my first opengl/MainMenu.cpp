@@ -36,6 +36,10 @@ void MainMenu::Init()
 	Controls->SetScale({ 1, 1, 1 });
 	Controls->SetTranslation({ 0, 0, 0 });*/
 
+	creditsScene = new UISprite("Textures/Credits.png", MyCamera, UISpriteShader);
+	creditsScene->SetScale({ 1, 1, 0.0 });
+	creditsScene->SetTranslation({ 0, 0, 0 });
+
 	//Play Button
 	TextLabel * TempLable;
 	TempLable = new TextLabel("PLAY", "Fonts/arial.ttf", glm::vec2(342, 300), TextLableShader);
@@ -123,11 +127,17 @@ void MainMenu::Render()
 	}
 	else if (CurrentState == Controls)
 	{
-		// Render Controls menu here
+		//Render Controls
+		Title = new UISprite("Textures/TheLogo.png", MyCamera, UISpriteShader);
+		Title->SetScale({ 1.5, 1.5, 0.0 });
+		Title->SetTranslation({ 0, 0.5, 0 });
+
+		Title->render();
 	}
 	else
 	{
-		// Render Credits menu here
+		// Render Credits
+		creditsScene->render();
 	}
 
 
@@ -175,10 +185,12 @@ void MainMenu::Update()
 		else if (CurrentState == Controls)
 		{
 			// Controls command for up
+			selection = NULL;
 		}
 		else
 		{
 			// Credits command for up
+			selection = NULL;
 		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_DOWN)
@@ -193,10 +205,12 @@ void MainMenu::Update()
 		else if (CurrentState == Controls)
 		{
 			// Controls command for down
+			selection = NULL;
 		}
 		else
 		{
 			// Credits command for down
+			selection = NULL;
 		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_LEFT)
@@ -211,10 +225,12 @@ void MainMenu::Update()
 		else if (CurrentState == Controls)
 		{
 			// Controls command for left
+			selection = NULL;
 		}
 		else
 		{
 			// Credits command for left
+			selection = NULL;
 		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_RIGHT)
@@ -229,10 +245,12 @@ void MainMenu::Update()
 		else if (CurrentState == Controls)
 		{
 			// Controls command for right
+			selection = NULL;
 		}
 		else
 		{
 			// Credits command for right
+			selection = NULL;
 		}
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_A)
@@ -255,12 +273,12 @@ void MainMenu::Update()
 				nextScene = EXIT;
 			}
 
-			if (selection == 1)
+			if (selection == 2)
 			{
 				CurrentState = Controls;
 			}
 
-			if (selection == 1)
+			if (selection == 3)
 			{
 				CurrentState = Credits;
 			}
@@ -269,11 +287,7 @@ void MainMenu::Update()
 
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_B)
 	{
-		if (CurrentState == MainMenues)
-		{
-			nextScene = EXIT;
-		}
-		else if (CurrentState == Controls)
+		if (CurrentState == Controls)
 		{
 			// Controls command for B
 			CurrentState = MainMenues;

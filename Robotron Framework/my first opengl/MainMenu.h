@@ -61,6 +61,8 @@ private:
 	ShaderLoader shaderloader;
 	UISprite * Title;
 	UISprite * Dpad;
+	UISprite * creditsScene;
+	UISprite * controlsScene;
 
 	// List of Shaders
 	GLuint UISpriteShader;
