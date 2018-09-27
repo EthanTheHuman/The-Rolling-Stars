@@ -32,9 +32,13 @@ void MainMenu::Init()
 	Dpad->SetScale({ 0.2, 0.2, 0.0 });
 	Dpad->SetTranslation({ 0, -0.23, 0 });
 
-	/*Controls = new UISprite("Textures/Controls.png", MyCamera, UISpriteShader);
-	Controls->SetScale({ 1, 1, 1 });
-	Controls->SetTranslation({ 0, 0, 0 });*/
+	Back = new UISprite("Textures/back.png", MyCamera, UISpriteShader);
+	Back->SetScale({ 0.25, 0.25, 0.0 });
+	Back->SetTranslation({ 0.1, -0.88, 0 });
+
+	controlsScene= new UISprite("Textures/Controls.png", MyCamera, UISpriteShader);
+	controlsScene->SetScale({ 1, 1.3, 0 });
+	controlsScene->SetTranslation({ 0, 0.115, 0 });
 
 	creditsScene = new UISprite("Textures/Credits.png", MyCamera, UISpriteShader);
 	creditsScene->SetScale({ 1, 1, 0.0 });
@@ -128,16 +132,14 @@ void MainMenu::Render()
 	else if (CurrentState == Controls)
 	{
 		//Render Controls
-		Title = new UISprite("Textures/TheLogo.png", MyCamera, UISpriteShader);
-		Title->SetScale({ 1.5, 1.5, 0.0 });
-		Title->SetTranslation({ 0, 0.5, 0 });
-
-		Title->render();
+		controlsScene->render();
+		Back->render();
 	}
 	else
 	{
 		// Render Credits
 		creditsScene->render();
+		Back->render();
 	}
 
 

@@ -63,6 +63,7 @@ private:
 	UISprite * Dpad;
 	UISprite * creditsScene;
 	UISprite * controlsScene;
+	UISprite * Back;
 
 	// List of Shaders
 	GLuint UISpriteShader;
