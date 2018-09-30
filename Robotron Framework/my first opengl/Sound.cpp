@@ -42,7 +42,9 @@ const bool Sound::LoadAudio()
 	result = audioMgr->createSound("Sounds/Splat.wav", FMOD_DEFAULT, 0, &fxSplat);
 	result = audioMgr->createSound("Sounds/Game.mp3", FMOD_DEFAULT, 0, &bgmTheme);
 	result = audioMgr->createSound("Sounds/Menu.mp3", FMOD_DEFAULT, 0, &menuTheme);
+	//change to Bounce.mp3 for non meme sound
 	result = audioMgr->createSound("Sounds/Bounce.wav", FMOD_DEFAULT, 0, &bounce);
+	result = audioMgr->createSound("Sounds/Select.mp3", FMOD_DEFAULT, 0, &select);
 
 	bgmTheme->setMode(FMOD_LOOP_NORMAL);
 	menuTheme->setMode(FMOD_LOOP_NORMAL);

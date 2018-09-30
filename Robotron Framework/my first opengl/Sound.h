@@ -14,6 +14,7 @@ public:
 	FMOD::Sound* bgmTheme;
 	FMOD::Sound* menuTheme;
 	FMOD::Sound* bounce;
+	FMOD::Sound* select;
 
 	bool InitFmod();
 	const bool LoadAudio();

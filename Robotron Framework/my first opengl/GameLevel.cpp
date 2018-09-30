@@ -116,7 +116,6 @@ void GameLevel::Update()
 						//Play sound
 						Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bounce, 0, false, &Sound::GetInstance()->fxchannel);
 
-
 						CollidingPairs.push_back({ Ball, Target });
 
 						float fDistance = sqrtf((Ball->Xpos - Target->Xpos) * (Ball->Xpos - Target->Xpos) + (Ball->Ypos - Target->Ypos) * (Ball->Ypos - Target->Ypos));
@@ -166,6 +165,10 @@ void GameLevel::Update()
 		for (auto Ball : Balls) {
 			if (!Ball->Dead) {
 				if (!ArenaCollision.collide(ArenaX, ArenaY, ArenaH, ArenaW, Ball->Xpos, Ball->Ypos, Ball->ColisionRadius)) {
+
+					//Play falling sound
+					Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->fxSplat, 0, false, &Sound::GetInstance()->fxchannel);
+
 					Ball->Dead = true;
 					if (Ball->Ypos > -0.5) {
 						Ball->DeadY = true;

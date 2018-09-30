@@ -19,6 +19,9 @@ MainMenu::MainMenu()
 void MainMenu::Init()
 {
 	CurrentState = MainMenues;
+
+	Sound::GetInstance()->Musicchannel->stop();
+
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
@@ -43,6 +46,8 @@ void MainMenu::Init()
 	creditsScene = new UISprite("Textures/Credits.png", MyCamera, UISpriteShader);
 	creditsScene->SetScale({ 1, 1, 0.0 });
 	creditsScene->SetTranslation({ 0, 0, 0 });
+
+	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->menuTheme, 0, false, &Sound::GetInstance()->Musicchannel);
 
 	//Play Button
 	TextLabel * TempLable;
@@ -177,6 +182,7 @@ void MainMenu::Update()
 
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_UP)
 	{
+		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//UP
 		if (CurrentState == MainMenues)
 		{
@@ -197,6 +203,7 @@ void MainMenu::Update()
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_DOWN)
 	{
+		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//DOWN
 		if (CurrentState == MainMenues)
 		{
@@ -217,6 +224,7 @@ void MainMenu::Update()
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_LEFT)
 	{
+		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//LEFT
 		if (CurrentState == MainMenues)
 		{
@@ -237,6 +245,7 @@ void MainMenu::Update()
 	}
 	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
+		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//RIGHT
 		if (CurrentState == MainMenues)
 		{
