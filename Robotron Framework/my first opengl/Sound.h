@@ -13,6 +13,7 @@ public:
 	FMOD::Sound* fxSplat;
 	FMOD::Sound* bgmTheme;
 	FMOD::Sound* menuTheme;
+	FMOD::Sound* bounce;
 
 	bool InitFmod();
 	const bool LoadAudio();

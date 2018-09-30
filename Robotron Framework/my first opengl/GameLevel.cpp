@@ -113,6 +113,10 @@ void GameLevel::Update()
 				if (Ball != Target && !Ball->Dead && !Target->Dead) {
 					if (CheckCollision(Ball, Target)) {
 
+						//Play sound
+						Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bounce, 0, false, &Sound::GetInstance()->fxchannel);
+
+
 						CollidingPairs.push_back({ Ball, Target });
 
 						float fDistance = sqrtf((Ball->Xpos - Target->Xpos) * (Ball->Xpos - Target->Xpos) + (Ball->Ypos - Target->Ypos) * (Ball->Ypos - Target->Ypos));
