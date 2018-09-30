@@ -268,6 +268,7 @@ void MainMenu::Update()
 	{
 		//A
 		std::cout << "Gamepad A" << std::endl;
+		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		
 		if (CurrentState == MainMenues)
 		{
