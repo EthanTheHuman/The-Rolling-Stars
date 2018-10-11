@@ -20,8 +20,6 @@ void MainMenu::Init()
 {
 	CurrentState = MainMenues;
 
-	Sound::GetInstance()->Musicchannel->stop();
-
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
@@ -47,6 +45,8 @@ void MainMenu::Init()
 	creditsScene->SetScale({ 1, 1, 0.0 });
 	creditsScene->SetTranslation({ 0, 0, 0 });
 
+
+	Sound::GetInstance()->Musicchannel->stop();
 	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->menuTheme, 0, false, &Sound::GetInstance()->Musicchannel);
 
 	//Play Button
@@ -69,16 +69,16 @@ void MainMenu::Init()
 
 
 	//Player connected messages
-	Player1 = new TextLabel("Player 1", "Fonts/arial.ttf", glm::vec2(0, 10), TextLableShader);
+	Player1 = new TextLabel("Player 1", "Fonts/arial.ttf", glm::vec2(0, 560), TextLableShader);
 	Player1->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
 
-	Player2 = new TextLabel("Player 2", "Fonts/arial.ttf", glm::vec2(620, 10), TextLableShader);
+	Player2 = new TextLabel("Player 2", "Fonts/arial.ttf", glm::vec2(620, 560), TextLableShader);
 	Player2->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
 
-	Player3 = new TextLabel("Player 3", "Fonts/arial.ttf", glm::vec2(0, 560), TextLableShader);
+	Player3 = new TextLabel("Player 3", "Fonts/arial.ttf", glm::vec2(0, 10), TextLableShader);
 	Player3->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
 
-	Player4 = new TextLabel("Player 4", "Fonts/arial.ttf", glm::vec2(620, 560), TextLableShader);
+	Player4 = new TextLabel("Player 4", "Fonts/arial.ttf", glm::vec2(620, 10), TextLableShader);
 	Player4->SetColor(glm::vec3(1.0f, 1.0f, 0.0f));
 
 	MySkybox = new CubeMap(MyCamera, SkyboxShader, "Space/bkg1_top.png", "Space/bkg1_bot.png", "Space/bkg1_right.png", "Space/bkg1_left.png", "Space/bkg1_front.png", "Space/bkg1_back.png");

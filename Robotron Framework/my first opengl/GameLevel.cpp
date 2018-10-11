@@ -36,24 +36,28 @@ void GameLevel::Init()
 	Arena->AddScale(glm::vec3(2, 2, 0));
 	Arena->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
 
+	ScoreBar = new Sprite("Textures/ScoreBar.png", MyCamera, SpriteShader);
+	ScoreBar->SetScale(glm::vec3(-2, 2, 0));
+	//ScoreBar->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
+
 	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
-	Balls[0]->ChangePosition({ -0.5, 0.0 });
+	Balls[0]->ChangePosition({ 0.5, 0.0 });
 	Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
-	Balls[1]->ChangePosition({ -0.5, -1.0 });
+	Balls[1]->ChangePosition({ -0.5, -0.0 });
 	Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
 	Balls[2]->ChangePosition({ 0.5, -1.0 });
 	Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
-	Balls[3]->ChangePosition({ 0.5, 0.0 });
+	Balls[3]->ChangePosition({ -0.5, -1.0 });
 
-	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(0.0f, 0.0f), TextLableShader);
-	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(765.0f, 10.0f), TextLableShader);
-	Player3 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(0.0f, 560.0f), TextLableShader);
-	Player4 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(765.0f, 560.0f), TextLableShader);
+	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0f, 505.0f), TextLableShader);
+	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(697.0f, 505.0f), TextLableShader);
+	Player3 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0, 410.0f), TextLableShader);
+	Player4 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(697.0f, 410.0f), TextLableShader);
 
-	Player1->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
-	Player2->SetColor(glm::vec3(0.0f, 0.0f, 1.0f));
-	Player3->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
-	Player4->SetColor(glm::vec3(1.0f, 1.0f, 0.0f));
+	Player1->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+	Player2->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+	Player3->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
+	Player4->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 
 
 }
@@ -84,6 +88,8 @@ void GameLevel::Render()
 	}
 
 	Arena->render();
+
+	ScoreBar->render();
 
 	Player1->Render();
 	Player2->Render();
