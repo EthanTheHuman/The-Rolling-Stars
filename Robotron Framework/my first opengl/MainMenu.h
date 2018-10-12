@@ -47,6 +47,8 @@ public:
 	void Update();
 	void MoveCharacter(unsigned char KeyState[255]);
 	void SetControlers(std::vector<CXBOXController*> Controllers);
+	bool TwoPlayersConnected();
+	CXBOXController* GetFirstConnectedConrtoller();
 
 private:
 	// List of objects

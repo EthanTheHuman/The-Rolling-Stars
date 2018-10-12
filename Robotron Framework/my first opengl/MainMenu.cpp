@@ -45,7 +45,6 @@ void MainMenu::Init()
 	creditsScene->SetScale({ 1, 1, 0.0 });
 	creditsScene->SetTranslation({ 0, 0, 0 });
 
-
 	Sound::GetInstance()->Musicchannel->stop();
 	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->menuTheme, 0, false, &Sound::GetInstance()->Musicchannel);
 
@@ -180,7 +179,7 @@ void MainMenu::Update()
 	GLfloat camZ = cos(currentTime) * radius;
 	MyCamera->SetCameraPosition({ camX, 2.5, camZ });
 
-	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_UP)
+	if (GetFirstConnectedConrtoller()->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_UP)
 	{
 		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//UP
@@ -201,7 +200,7 @@ void MainMenu::Update()
 			selection = NULL;
 		}
 	}
-	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_DOWN)
+	if (GetFirstConnectedConrtoller()->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_DOWN)
 	{
 		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//DOWN
@@ -222,7 +221,7 @@ void MainMenu::Update()
 			selection = NULL;
 		}
 	}
-	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_LEFT)
+	if (GetFirstConnectedConrtoller()->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_LEFT)
 	{
 		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//LEFT
@@ -243,7 +242,7 @@ void MainMenu::Update()
 			selection = NULL;
 		}
 	}
-	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_RIGHT)
+	if (GetFirstConnectedConrtoller()->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
 		Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->select, 0, false, &Sound::GetInstance()->fxchannel);
 		//RIGHT
@@ -264,7 +263,7 @@ void MainMenu::Update()
 			selection = NULL;
 		}
 	}
-	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_A)
+	if (GetFirstConnectedConrtoller()->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_A)
 	{
 		//A
 		std::cout << "Gamepad A" << std::endl;
@@ -273,10 +272,14 @@ void MainMenu::Update()
 		if (CurrentState == MainMenues)
 		{
 			//Play
-			if (selection == 0)
+			if (selection == 0 && TwoPlayersConnected())
 			{
 				nextScene = NEXT;
 
+			}
+			else
+			{
+				std::cout << "Two Players must be Connected" << std::endl;
 			}
 
 			//Exit
@@ -297,7 +300,7 @@ void MainMenu::Update()
 		}
 	}
 
-	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_B)
+	if (GetFirstConnectedConrtoller()->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_B)
 	{
 		if (CurrentState == Controls)
 		{
@@ -379,4 +382,63 @@ void MainMenu::MoveCharacter(unsigned char KeyState[255]) {
 void MainMenu::SetControlers(std::vector<CXBOXController*> Controllers)
 {
 	XBoxControllers = Controllers;
+}
+
+bool MainMenu::TwoPlayersConnected() {
+
+	if (XBoxControllers[0]->IsConnected() && XBoxControllers[1]->IsConnected())
+	{
+		return true;
+	}
+	if (XBoxControllers[0]->IsConnected() && XBoxControllers[2]->IsConnected())
+	{
+		return true;
+	}
+	if (XBoxControllers[0]->IsConnected() && XBoxControllers[3]->IsConnected())
+	{
+		return true;
+	}
+	if (XBoxControllers[1]->IsConnected() && XBoxControllers[2]->IsConnected())
+	{
+		return true;
+	}
+	if (XBoxControllers[1]->IsConnected() && XBoxControllers[3]->IsConnected())
+	{
+		return true;
+	}
+	if (XBoxControllers[2]->IsConnected() && XBoxControllers[3]->IsConnected())
+	{
+		return true;
+	}
+
+
+	return false;
+
+}
+
+CXBOXController* MainMenu::GetFirstConnectedConrtoller()
+{
+	if (XBoxControllers[0]->IsConnected())
+	{
+		return XBoxControllers[0];
+	}
+	if (XBoxControllers[0]->IsConnected() == false && XBoxControllers[1]->IsConnected())
+	{
+		return XBoxControllers[1];
+	}
+	if (XBoxControllers[0]->IsConnected() == false && XBoxControllers[1]->IsConnected() == false && XBoxControllers[2]->IsConnected())
+	{
+		return XBoxControllers[2];
+
+	}
+	if (XBoxControllers[0]->IsConnected() == false && XBoxControllers[1]->IsConnected() == false && XBoxControllers[2]->IsConnected() == false && XBoxControllers[3]->IsConnected())
+	{
+		return XBoxControllers[3];
+
+	}
+
+	else
+	{
+		return  XBoxControllers[0];
+	}
 }

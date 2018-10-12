@@ -76,4 +76,8 @@ private:
 	double ArenaY = -0.5;
 	double ArenaW = 1;
 	double ArenaH = 2;
+
+	//bool
+	std::vector<bool> ObjectInitialized;
+	
 };

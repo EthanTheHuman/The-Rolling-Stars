@@ -16,14 +16,29 @@ GameLevel::~GameLevel()
 void GameLevel::Init()
 {
 	BallPlayer* Temp;
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
+
+	if (XBoxControllers[0]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+	if (XBoxControllers[1]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+	if (XBoxControllers[2]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+	if (XBoxControllers[3]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+
+	
 
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	SpriteShader = shaderloader.CreateProgram("Shaders/Sprite.vs", "Shaders/Sprite.fs");
@@ -40,14 +55,57 @@ void GameLevel::Init()
 	ScoreBar->SetScale(glm::vec3(-2, 2, 0));
 	//ScoreBar->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
 
-	Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
-	Balls[0]->ChangePosition({ 0.5, 0.0 });
-	Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
-	Balls[1]->ChangePosition({ -0.5, -0.0 });
-	Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
-	Balls[2]->ChangePosition({ 0.5, -1.0 });
-	Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
-	Balls[3]->ChangePosition({ -0.5, -1.0 });
+	if (XBoxControllers[0]->IsConnected())
+	{
+		Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
+		Balls[0]->ChangePosition({ 0.5, 0.0 });
+		ObjectInitialized.push_back(true);		//ObjectInitialized[0]
+	}
+
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+
+	if (XBoxControllers[1]->IsConnected())
+	{
+		Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
+		Balls[1]->ChangePosition({ -0.5, -0.0 });
+		ObjectInitialized.push_back(true);		//ObjectInitialized[1]
+	}
+
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+	
+	if (XBoxControllers[2]->IsConnected())
+	{
+		Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
+		Balls[2]->ChangePosition({ 0.5, -1.0 });
+		ObjectInitialized.push_back(true);		//ObjectInitialized[2]
+	}
+
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+
+	if (XBoxControllers[3]->IsConnected())
+	{
+		Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
+		Balls[3]->ChangePosition({ -0.5, -1.0 });
+		ObjectInitialized.push_back(true);		//ObjectInitialized[3]
+	}
+	
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+
+	
+
+	
 
 	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0f, 505.0f), TextLableShader);
 	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(697.0f, 505.0f), TextLableShader);
@@ -91,10 +149,22 @@ void GameLevel::Render()
 
 	ScoreBar->render();
 
-	Player1->Render();
-	Player2->Render();
-	Player3->Render();
-	Player4->Render();
+	if (ObjectInitialized[0] == true)
+	{
+		Player1->Render();
+	}
+	if (ObjectInitialized[1] == true)
+	{
+		Player2->Render();
+	}
+	if (ObjectInitialized[2] == true)
+	{
+		Player3->Render();
+	}
+	if (ObjectInitialized[3] == true)
+	{
+		Player4->Render();
+	}
 
 	for (auto Ball : Balls) {
 		if (!Ball->DeadY) {
@@ -203,26 +273,47 @@ void GameLevel::Update()
 	std::ostringstream P3iConvert;
 	std::ostringstream P4iConvert;
 
-	P1iConvert << Balls[0]->wins;
-	Player1->SetText(P1iConvert.str());
-
-	P2iConvert << Balls[1]->wins;
-	Player2->SetText(P2iConvert.str());
-
-	P3iConvert << Balls[2]->wins;
-	Player3->SetText(P3iConvert.str());
-
-	P4iConvert << Balls[3]->wins;
-	Player4->SetText(P4iConvert.str());
-
+	if (XBoxControllers[0]->IsConnected())
+	{
+		P1iConvert << Balls[0]->wins;
+		Player1->SetText(P1iConvert.str());
+	}
+	if (XBoxControllers[1]->IsConnected())
+	{
+		P2iConvert << Balls[1]->wins;
+		Player2->SetText(P2iConvert.str());
+	}
+	if (XBoxControllers[2]->IsConnected())
+	{
+		P3iConvert << Balls[2]->wins;
+		Player3->SetText(P3iConvert.str());
+	}
+	if (XBoxControllers[3]->IsConnected())
+	{
+		P4iConvert << Balls[3]->wins;
+		Player4->SetText(P4iConvert.str());
+	}
 }
 
 void GameLevel::MoveCharacter(unsigned char KeyState[255])
 {
-	Balls[0]->MoveCharacter(KeyState);
-	Balls[1]->MoveCharacter(KeyState);
-	Balls[2]->MoveCharacter(KeyState);
-	Balls[3]->MoveCharacter(KeyState);
+	if (XBoxControllers[0]->IsConnected())
+	{
+		Balls[0]->MoveCharacter(KeyState);
+	}
+	if (XBoxControllers[1]->IsConnected())
+	{
+		Balls[1]->MoveCharacter(KeyState);
+	}
+	if (XBoxControllers[2]->IsConnected())
+	{
+		Balls[2]->MoveCharacter(KeyState);
+	}
+	if (XBoxControllers[3]->IsConnected())
+	{
+		Balls[3]->MoveCharacter(KeyState);
+	}
+
 }
 
 void GameLevel::SetControlers(std::vector<CXBOXController*> Controllers)
@@ -237,10 +328,22 @@ bool GameLevel::CheckCollision(BallPlayer *one, BallPlayer* two) // AABB - Circl
 
 void GameLevel::ResetBalls()
 {
-	Balls[0]->ChangePosition({ -0.5, 0.0 });
-	Balls[1]->ChangePosition({ -0.5, -1.0 });
-	Balls[2]->ChangePosition({ 0.5, -1.0 });
-	Balls[3]->ChangePosition({ 0.5, 0.0 });
+	if (XBoxControllers[0]->IsConnected())
+	{
+		Balls[0]->ChangePosition({ -0.5, 0.0 });
+	}
+	if (XBoxControllers[1]->IsConnected())
+	{
+		Balls[1]->ChangePosition({ -0.5, -1.0 });
+	}
+	if (XBoxControllers[2]->IsConnected())
+	{
+		Balls[2]->ChangePosition({ 0.5, -1.0 });
+	}
+	if (XBoxControllers[3]->IsConnected())
+	{
+		Balls[3]->ChangePosition({ 0.5, 0.0 });
+	}
 
 	for (auto Ball : Balls) {
 		Ball->Dead = false;
