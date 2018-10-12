@@ -1,14 +1,7 @@
-﻿  MainMenu.cpp
-c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
-  c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
-c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(90): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(94): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(98): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(131): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\robotron framework\my first opengl\mainmenu.cpp(174): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+﻿  Sound.cpp
   Generating code
-  2 of 1079 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  3 of 1079 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   My First OpenGL.vcxproj -> C:\Users\GGPC\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe
