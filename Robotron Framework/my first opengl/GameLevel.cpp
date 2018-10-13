@@ -51,15 +51,56 @@ void GameLevel::Init()
 	Arena->AddScale(glm::vec3(2, 2, 0));
 	Arena->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
 
-	ScoreBar = new Sprite("Textures/ScoreBar.png", MyCamera, SpriteShader);
-	ScoreBar->SetScale(glm::vec3(-2, 2, 0));
-	//ScoreBar->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
+	if (XBoxControllers[0]->IsConnected())
+	{
+		Player1ScoreBar = new Sprite("Textures/Player1ScoreBar.png", MyCamera, SpriteShader);
+		Player1ScoreBar->SetScale(glm::vec3(-2, 2, 0));
+		ObjectInitialized.push_back(true);		//ObjectInitialized[0]
+	}
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+	if (XBoxControllers[1]->IsConnected())
+	{
+		Player2ScoreBar = new Sprite("Textures/Player2ScoreBar.png", MyCamera, SpriteShader);
+		Player2ScoreBar->SetScale(glm::vec3(-2, 2, 0));
+		ObjectInitialized.push_back(true);		//ObjectInitialized[1]
+	}
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+	if (XBoxControllers[2]->IsConnected())
+	{
+		Player3ScoreBar = new Sprite("Textures/Player3ScoreBar.png", MyCamera, SpriteShader);
+		Player3ScoreBar->SetScale(glm::vec3(-2, 2, 0));
+		ObjectInitialized.push_back(true);		//ObjectInitialized[2]
+	}
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+	if (XBoxControllers[3]->IsConnected())
+	{
+		Player4ScoreBar = new Sprite("Textures/Player4ScoreBar.png", MyCamera, SpriteShader);
+		Player4ScoreBar->SetScale(glm::vec3(-2, 2, 0));
+		ObjectInitialized.push_back(true);		//ObjectInitialized[3]
+	}
+	else
+	{
+		ObjectInitialized.push_back(false);
+	}
+
+
+
+
 
 	if (XBoxControllers[0]->IsConnected())
 	{
 		Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
 		Balls[0]->ChangePosition({ 0.5, 0.0 });
-		ObjectInitialized.push_back(true);		//ObjectInitialized[0]
+		ObjectInitialized.push_back(true);		//ObjectInitialized[4]
 	}
 
 	else
@@ -71,7 +112,7 @@ void GameLevel::Init()
 	{
 		Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
 		Balls[1]->ChangePosition({ -0.5, -0.0 });
-		ObjectInitialized.push_back(true);		//ObjectInitialized[1]
+		ObjectInitialized.push_back(true);		//ObjectInitialized[5]
 	}
 
 	else
@@ -83,7 +124,7 @@ void GameLevel::Init()
 	{
 		Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
 		Balls[2]->ChangePosition({ 0.5, -1.0 });
-		ObjectInitialized.push_back(true);		//ObjectInitialized[2]
+		ObjectInitialized.push_back(true);		//ObjectInitialized[6]
 	}
 
 	else
@@ -95,7 +136,7 @@ void GameLevel::Init()
 	{
 		Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
 		Balls[3]->ChangePosition({ -0.5, -1.0 });
-		ObjectInitialized.push_back(true);		//ObjectInitialized[3]
+		ObjectInitialized.push_back(true);		//ObjectInitialized[7]
 	}
 	
 	else
@@ -147,21 +188,40 @@ void GameLevel::Render()
 
 	Arena->render();
 
-	ScoreBar->render();
+	//ScoreBoard Render
 
 	if (ObjectInitialized[0] == true)
 	{
-		Player1->Render();
+		Player1ScoreBar->render();
 	}
 	if (ObjectInitialized[1] == true)
 	{
-		Player2->Render();
+		Player2ScoreBar->render();
 	}
 	if (ObjectInitialized[2] == true)
 	{
-		Player3->Render();
+		Player3ScoreBar->render();
 	}
 	if (ObjectInitialized[3] == true)
+	{
+		Player4ScoreBar->render();
+	}
+
+	//Player Render
+
+	if (ObjectInitialized[4] == true)
+	{
+		Player1->Render();
+	}
+	if (ObjectInitialized[5] == true)
+	{
+		Player2->Render();
+	}
+	if (ObjectInitialized[6] == true)
+	{
+		Player3->Render();
+	}
+	if (ObjectInitialized[7] == true)
 	{
 		Player4->Render();
 	}

@@ -63,7 +63,10 @@ private:
 	std::vector <BallPlayer*> Balls;
 	std::vector <pair<BallPlayer*, BallPlayer*>> CollidingPairs;
 	Sprite* Arena;
-	Sprite* ScoreBar;
+	Sprite* Player1ScoreBar;
+	Sprite* Player2ScoreBar;
+	Sprite* Player3ScoreBar;
+	Sprite* Player4ScoreBar;
 
 	//HUD
 	TextLabel* Player1;
