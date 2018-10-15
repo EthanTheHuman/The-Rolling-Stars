@@ -97,3 +97,11 @@ void BallPlayer::ChangePosition(glm::vec2 pos) {
 	Xpos = pos.x;
 	Ypos = pos.y;
 }
+
+void BallPlayer::SetScale(glm::vec3 scale) {
+	Sprite::SetScale(scale);
+}
+
+void BallPlayer::AddScale(glm::vec3 scale) {
+	Sprite::AddScale(scale);
+}

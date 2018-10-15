@@ -11,6 +11,8 @@ public:
 	void MoveCharacter(unsigned char KeyState[255]);
 	void UpdateCharater();
 	void ChangePosition(glm::vec2 pos);
+	void SetScale(glm::vec3 scale);
+	void AddScale(glm::vec3 scale);
 	float ColisionRadius = 0.1;
 	float Xpos;
 	float Ypos;

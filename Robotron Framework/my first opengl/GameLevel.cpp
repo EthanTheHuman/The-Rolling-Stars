@@ -5,6 +5,7 @@
 
 GameLevel::GameLevel()
 {
+
 }
 
 
@@ -144,10 +145,6 @@ void GameLevel::Init()
 		ObjectInitialized.push_back(false);
 	}
 
-	
-
-	
-
 	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0f, 505.0f), TextLableShader);
 	Player2 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(697.0f, 505.0f), TextLableShader);
 	Player3 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0, 410.0f), TextLableShader);
@@ -158,7 +155,7 @@ void GameLevel::Init()
 	Player3->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 	Player4->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 
-
+	int timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
 }
 
 void GameLevel::Deconstruct()
@@ -300,7 +297,7 @@ void GameLevel::Update()
 
 		for (auto Ball : Balls) {
 			if (!Ball->Dead) {
-				if (!ArenaCollision.collide(ArenaX, ArenaY, ArenaH, ArenaW, Ball->Xpos, Ball->Ypos, Ball->ColisionRadius)) {
+				if (!ArenaCollision.collide(ArenaX, ArenaY, ArenaH, ArenaW, Ball->Xpos, Ball->Ypos, 0.01)) {
 
 					//Play falling sound
 					Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->fxSplat, 0, false, &Sound::GetInstance()->fxchannel);
@@ -320,6 +317,10 @@ void GameLevel::Update()
 		for (auto Ball : Balls) {
 			if (!Ball->Dead) {
 				Ball->wins++;
+				float scale = 0.1 + (Ball->wins * 0.2);
+				Ball->SetScale({ scale,scale,scale });
+				Ball->ColisionRadius = scale;
+
 				if (Ball->wins == 3) {
 					nextScene = TOMAIN;
 				}
@@ -357,19 +358,19 @@ void GameLevel::Update()
 
 void GameLevel::MoveCharacter(unsigned char KeyState[255])
 {
-	if (XBoxControllers[0]->IsConnected())
+	if (ObjectInitialized[0] == true)
 	{
 		Balls[0]->MoveCharacter(KeyState);
 	}
-	if (XBoxControllers[1]->IsConnected())
+	if (ObjectInitialized[1] == true)
 	{
 		Balls[1]->MoveCharacter(KeyState);
 	}
-	if (XBoxControllers[2]->IsConnected())
+	if (ObjectInitialized[2] == true)
 	{
 		Balls[2]->MoveCharacter(KeyState);
 	}
-	if (XBoxControllers[3]->IsConnected())
+	if (ObjectInitialized[3] == true)
 	{
 		Balls[3]->MoveCharacter(KeyState);
 	}
@@ -388,21 +389,21 @@ bool GameLevel::CheckCollision(BallPlayer *one, BallPlayer* two) // AABB - Circl
 
 void GameLevel::ResetBalls()
 {
-	if (XBoxControllers[0]->IsConnected())
+	if (ObjectInitialized[0] == true)
 	{
-		Balls[0]->ChangePosition({ -0.5, 0.0 });
+		Balls[0]->ChangePosition({ 0.5, 0.0 });
 	}
-	if (XBoxControllers[1]->IsConnected())
+	if (ObjectInitialized[1] == true)
 	{
-		Balls[1]->ChangePosition({ -0.5, -1.0 });
+		Balls[1]->ChangePosition({ -0.5, -0.0 });
 	}
-	if (XBoxControllers[2]->IsConnected())
+	if (ObjectInitialized[2] == true)
 	{
 		Balls[2]->ChangePosition({ 0.5, -1.0 });
 	}
-	if (XBoxControllers[3]->IsConnected())
+	if (ObjectInitialized[3] == true)
 	{
-		Balls[3]->ChangePosition({ 0.5, 0.0 });
+		Balls[3]->ChangePosition({ -0.5, -1.0 });
 	}
 
 	for (auto Ball : Balls) {
