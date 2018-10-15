@@ -12,12 +12,12 @@ d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\m
 d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\ellipsecollisiontest.h(78): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\ellipsecollisiontest.h(80): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\ellipsecollisiontest.h(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(164): warning C4018: '<': signed/unsigned mismatch
-d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(292): warning C4018: '<': signed/unsigned mismatch
-d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(320): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(156): warning C4018: '<': signed/unsigned mismatch
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(304): warning C4018: '<': signed/unsigned mismatch
+d:\users\brandon.van7367\documents\github\the-rolling-stars\robotron framework\my first opengl\gamelevel.cpp(332): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Generating code
-  1 of 1052 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  12 of 1076 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    11 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   My First OpenGL.vcxproj -> D:\Users\brandon.van7367\Documents\GitHub\The-Rolling-Stars\Robotron Framework\Release\My First OpenGL.exe

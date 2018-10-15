@@ -18,28 +18,16 @@ void GameLevel::Init()
 {
 	BallPlayer* Temp;
 
-	if (XBoxControllers[0]->IsConnected())
-	{
-		Temp = new BallPlayer();
-		Balls.push_back(Temp);
-	}
-	if (XBoxControllers[1]->IsConnected())
-	{
-		Temp = new BallPlayer();
-		Balls.push_back(Temp);
-	}
-	if (XBoxControllers[2]->IsConnected())
-	{
-		Temp = new BallPlayer();
-		Balls.push_back(Temp);
-	}
-	if (XBoxControllers[3]->IsConnected())
-	{
-		Temp = new BallPlayer();
-		Balls.push_back(Temp);
-	}
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
+	Temp = new BallPlayer();
+	Balls.push_back(Temp);
 
-	
+
 
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	SpriteShader = shaderloader.CreateProgram("Shaders/Sprite.vs", "Shaders/Sprite.fs");
@@ -107,6 +95,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
+		Balls[0]->Dead = true;
 	}
 
 	if (XBoxControllers[1]->IsConnected())
@@ -119,6 +108,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
+		Balls[1]->Dead = true;
 	}
 	
 	if (XBoxControllers[2]->IsConnected())
@@ -131,6 +121,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
+		Balls[1]->Dead = true;
 	}
 
 	if (XBoxControllers[3]->IsConnected())
@@ -143,6 +134,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
+		Balls[3]->Dead = true;
 	}
 
 	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0f, 505.0f), TextLableShader);
@@ -167,7 +159,16 @@ void GameLevel::Deconstruct()
 	Balls.clear();
 	delete Arena;
 	delete MySkybox;
+	delete Player1ScoreBar;
+	delete Player2ScoreBar;
+	delete Player3ScoreBar;
+	delete Player4ScoreBar;
+	delete Player1;
+	delete Player2;
+	delete Player3;
+	delete Player4;
 	nextScene = NOTHING;
+	ObjectInitialized.clear();
 }
 
 void GameLevel::Render()
@@ -223,10 +224,21 @@ void GameLevel::Render()
 		Player4->Render();
 	}
 
-	for (auto Ball : Balls) {
-		if (!Ball->DeadY) {
-			Ball->render();
-		}
+	if (ObjectInitialized[0] == true)
+	{
+		Balls[0]->render();
+	}
+	if (ObjectInitialized[1] == true)
+	{
+		Balls[1]->render();
+	}
+	if (ObjectInitialized[2] == true)
+	{
+		Balls[2]->render();
+	}
+	if (ObjectInitialized[3] == true)
+	{
+		Balls[3]->render();
 	}
 
 	
