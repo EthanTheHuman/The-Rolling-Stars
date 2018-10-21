@@ -18,14 +18,26 @@ void GameLevel::Init()
 {
 	BallPlayer* Temp;
 
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
-	Temp = new BallPlayer();
-	Balls.push_back(Temp);
+	if (XBoxControllers[0]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+	if (XBoxControllers[1]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+	if (XBoxControllers[2]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
+	if (XBoxControllers[3]->IsConnected())
+	{
+		Temp = new BallPlayer();
+		Balls.push_back(Temp);
+	}
 
 
 
@@ -95,7 +107,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		Balls[0]->Dead = true;
+		//Balls[0]->Dead = true;
 	}
 
 	if (XBoxControllers[1]->IsConnected())
@@ -108,7 +120,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		Balls[1]->Dead = true;
+		//Balls[1]->Dead = true;
 	}
 	
 	if (XBoxControllers[2]->IsConnected())
@@ -121,7 +133,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		Balls[1]->Dead = true;
+		//Balls[2]->Dead = true;
 	}
 
 	if (XBoxControllers[3]->IsConnected())
@@ -134,7 +146,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		Balls[3]->Dead = true;
+		//Balls[3]->Dead = true;
 	}
 
 	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0f, 505.0f), TextLableShader);
@@ -205,7 +217,7 @@ void GameLevel::Render()
 		Player4ScoreBar->render();
 	}
 
-	//Player Render
+	//Score Text Render
 
 	if (ObjectInitialized[4] == true)
 	{
@@ -224,6 +236,7 @@ void GameLevel::Render()
 		Player4->Render();
 	}
 
+	//Player Render
 	if (ObjectInitialized[0] == true)
 	{
 		Balls[0]->render();
@@ -346,22 +359,22 @@ void GameLevel::Update()
 	std::ostringstream P3iConvert;
 	std::ostringstream P4iConvert;
 
-	if (XBoxControllers[0]->IsConnected())
+	if (ObjectInitialized[0] == true)
 	{
 		P1iConvert << Balls[0]->wins;
 		Player1->SetText(P1iConvert.str());
 	}
-	if (XBoxControllers[1]->IsConnected())
+	if (ObjectInitialized[1] == true)
 	{
 		P2iConvert << Balls[1]->wins;
 		Player2->SetText(P2iConvert.str());
 	}
-	if (XBoxControllers[2]->IsConnected())
+	if (ObjectInitialized[2] == true)
 	{
 		P3iConvert << Balls[2]->wins;
 		Player3->SetText(P3iConvert.str());
 	}
-	if (XBoxControllers[3]->IsConnected())
+	if (ObjectInitialized[3] == true)
 	{
 		P4iConvert << Balls[3]->wins;
 		Player4->SetText(P4iConvert.str());
