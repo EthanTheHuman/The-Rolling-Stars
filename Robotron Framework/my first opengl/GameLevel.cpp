@@ -50,7 +50,9 @@ void GameLevel::Init()
 		Balls.push_back(Temp);
 	}
 
-
+	Sound::GetInstance()->Musicchannel->stop();
+	Sound::GetInstance()->fxchannel->stop();
+	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bgmTheme, 0, false, &Sound::GetInstance()->Musicchannel);
 
 	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	SpriteShader = shaderloader.CreateProgram("Shaders/Sprite.vs", "Shaders/Sprite.fs");
