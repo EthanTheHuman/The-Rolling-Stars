@@ -80,6 +80,8 @@ private:
 	double ArenaW = 1;
 	double ArenaH = 2;
 
+	float NewBallScale = 1.5f;
+
 
 	//bool
 	std::vector<bool> ObjectInitialized;

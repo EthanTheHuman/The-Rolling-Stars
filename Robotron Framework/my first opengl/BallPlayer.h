@@ -23,7 +23,7 @@ public:
 	bool DeadY = false;
 	int wins = 0;
 private:
-	float friction = 0.0005;
-	float acceleration = 0.001;
+	float friction = 0.0003;
+	float acceleration = 0.0012;
 	CXBOXController* m_pCXboxController;
 };

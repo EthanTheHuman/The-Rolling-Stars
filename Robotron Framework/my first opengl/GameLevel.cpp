@@ -1,5 +1,12 @@
 #include "GameLevel.h"
 
+float CurrentTime = 0.0f;
+float LastExacuted = 0.0f;
+float ElapsedTime = CurrentTime - LastExacuted;
+
+float Delay = 0.0f;
+float DelayTemp;
+bool IsDelayed = false;
 
 
 
@@ -16,8 +23,8 @@ GameLevel::~GameLevel()
 
 void GameLevel::Init()
 {
-	Sound::GetInstance()->Musicchannel->stop();
-	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bgmTheme, 0, false, &Sound::GetInstance()->Musicchannel);
+	CurrentTime = glutGet(GLUT_ELAPSED_TIME) / 1000;
+	//LastExacuted = glutGet(GLUT_ELAPSED_TIME) / 1000;
 
 	BallPlayer* Temp;
 
@@ -104,6 +111,8 @@ void GameLevel::Init()
 	{
 		Balls[0]->Init("Textures/Balls/Player1/Ball.png", MyCamera, SpriteShader, XBoxControllers[0]);
 		Balls[0]->ChangePosition({ 0.5, 0.0 });
+		Balls[0]->AddScale(glm::vec3(NewBallScale, NewBallScale, NewBallScale));
+		Balls[0]->ColisionRadius = Balls[0]->ColisionRadius * NewBallScale;
 		ObjectInitialized.push_back(true);		//ObjectInitialized[4]
 	}
 
@@ -117,6 +126,8 @@ void GameLevel::Init()
 	{
 		Balls[1]->Init("Textures/Balls/Player2/Ball.png", MyCamera, SpriteShader, XBoxControllers[1]);
 		Balls[1]->ChangePosition({ -0.5, -0.0 });
+		Balls[1]->AddScale(glm::vec3(NewBallScale, NewBallScale, NewBallScale));
+		Balls[1]->ColisionRadius = Balls[1]->ColisionRadius * NewBallScale;
 		ObjectInitialized.push_back(true);		//ObjectInitialized[5]
 	}
 
@@ -125,11 +136,13 @@ void GameLevel::Init()
 		ObjectInitialized.push_back(false);
 		//Balls[1]->Dead = true;
 	}
-	
+
 	if (XBoxControllers[2]->IsConnected())
 	{
 		Balls[2]->Init("Textures/Balls/Player3/Ball.png", MyCamera, SpriteShader, XBoxControllers[2]);
 		Balls[2]->ChangePosition({ 0.5, -1.0 });
+		Balls[2]->AddScale(glm::vec3(NewBallScale, NewBallScale, NewBallScale));
+		Balls[2]->ColisionRadius = Balls[2]->ColisionRadius * NewBallScale;
 		ObjectInitialized.push_back(true);		//ObjectInitialized[6]
 	}
 
@@ -143,9 +156,11 @@ void GameLevel::Init()
 	{
 		Balls[3]->Init("Textures/Balls/Player4/Ball.png", MyCamera, SpriteShader, XBoxControllers[3]);
 		Balls[3]->ChangePosition({ -0.5, -1.0 });
+		Balls[3]->AddScale(glm::vec3(NewBallScale, NewBallScale, NewBallScale));
+		Balls[3]->ColisionRadius = Balls[3]->ColisionRadius * NewBallScale;
 		ObjectInitialized.push_back(true);		//ObjectInitialized[7]
 	}
-	
+
 	else
 	{
 		ObjectInitialized.push_back(false);
@@ -162,7 +177,6 @@ void GameLevel::Init()
 	Player3->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 	Player4->SetColor(glm::vec3(1.0f, 1.0f, 1.0f));
 
-	int timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
 }
 
 void GameLevel::Deconstruct()
@@ -257,11 +271,16 @@ void GameLevel::Render()
 		Balls[3]->render();
 	}
 
-	
+	std::cout << DelayTemp << std::endl;
+
 }
 
 void GameLevel::Update()
 {
+	CurrentTime = glutGet(GLUT_ELAPSED_TIME) / 1000;
+	ElapsedTime = CurrentTime - LastExacuted;
+	DelayTemp = ElapsedTime;
+
 	int alive = 0;
 	for (auto Ball : Balls) {
 		if (!Ball->Dead) {
@@ -342,46 +361,67 @@ void GameLevel::Update()
 		}
 	}
 	else {
-		for (auto Ball : Balls) {
-			if (!Ball->Dead) {
-				Ball->wins++;
-				float scale = 0.1 + (Ball->wins * 0.2);
-				Ball->SetScale({ scale,scale,scale });
-				Ball->ColisionRadius = scale;
+		if (IsDelayed == false)
+		{
+			DelayTemp = 0.0f;
+			Delay = 3.0f;
+			IsDelayed = true;
+			LastExacuted = glutGet(GLUT_ELAPSED_TIME) / 1000;
+		}
+		if (DelayTemp == Delay)
+		{
+			Delay = 0.0f;
 
-				if (Ball->wins == 3) {
-					nextScene = TOMAIN;
+			for (auto Ball : Balls) {
+				if (!Ball->Dead) {
+					Ball->wins++;
+					float scale = 0.1 + (Ball->wins * 0.2);
+					//Ball->SetScale({ scale,scale,scale });
+					//Ball->ColisionRadius = scale;
+					Delay = 2.0f;
+
+					if (Ball->wins == 3) {
+						nextScene = TOMAIN;
+					}
 				}
 			}
+			IsDelayed = false;
+
+			ResetBalls();
+
+			std::ostringstream P1iConvert;
+			std::ostringstream P2iConvert;
+			std::ostringstream P3iConvert;
+			std::ostringstream P4iConvert;
+
+			if (ObjectInitialized[0] == true)
+			{
+				P1iConvert << Balls[0]->wins;
+				Player1->SetText(P1iConvert.str());
+			}
+			if (ObjectInitialized[1] == true)
+			{
+				P2iConvert << Balls[1]->wins;
+				Player2->SetText(P2iConvert.str());
+			}
+			if (ObjectInitialized[2] == true)
+			{
+				P3iConvert << Balls[2]->wins;
+				Player3->SetText(P3iConvert.str());
+			}
+			if (ObjectInitialized[3] == true)
+			{
+				P4iConvert << Balls[3]->wins;
+				Player4->SetText(P4iConvert.str());
+			}
 		}
-		ResetBalls();
+
 	}
 
-	std::ostringstream P1iConvert;
-	std::ostringstream P2iConvert;
-	std::ostringstream P3iConvert;
-	std::ostringstream P4iConvert;
 
-	if (ObjectInitialized[0] == true)
-	{
-		P1iConvert << Balls[0]->wins;
-		Player1->SetText(P1iConvert.str());
-	}
-	if (ObjectInitialized[1] == true)
-	{
-		P2iConvert << Balls[1]->wins;
-		Player2->SetText(P2iConvert.str());
-	}
-	if (ObjectInitialized[2] == true)
-	{
-		P3iConvert << Balls[2]->wins;
-		Player3->SetText(P3iConvert.str());
-	}
-	if (ObjectInitialized[3] == true)
-	{
-		P4iConvert << Balls[3]->wins;
-		Player4->SetText(P4iConvert.str());
-	}
+
+
+
 }
 
 void GameLevel::MoveCharacter(unsigned char KeyState[255])
@@ -389,6 +429,7 @@ void GameLevel::MoveCharacter(unsigned char KeyState[255])
 	if (ObjectInitialized[0] == true)
 	{
 		Balls[0]->MoveCharacter(KeyState);
+
 	}
 	if (ObjectInitialized[1] == true)
 	{
@@ -402,6 +443,7 @@ void GameLevel::MoveCharacter(unsigned char KeyState[255])
 	{
 		Balls[3]->MoveCharacter(KeyState);
 	}
+
 
 }
 
