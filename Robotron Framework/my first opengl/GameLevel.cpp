@@ -383,8 +383,8 @@ void GameLevel::Update()
 				if (!Ball->Dead) {
 					Ball->wins++;
 					float scale = 0.1 + (Ball->wins * 0.2);
-					//Ball->SetScale({ scale,scale,scale });
-					//Ball->ColisionRadius = scale;
+					Ball->SetScale({ scale,scale,scale });
+					Ball->ColisionRadius = scale;
 					Delay = 2.0f;
 
 					if (Ball->wins == 3) {
