@@ -7,6 +7,7 @@ float ElapsedTime = CurrentTime - LastExacuted;
 float Delay = 0.0f;
 float DelayTemp;
 bool IsDelayed = false;
+bool IsColiding = false;
 
 
 
@@ -102,10 +103,6 @@ void GameLevel::Init()
 	{
 		ObjectInitialized.push_back(false);
 	}
-
-
-
-
 
 	if (XBoxControllers[0]->IsConnected())
 	{
@@ -281,6 +278,8 @@ void GameLevel::Update()
 	ElapsedTime = CurrentTime - LastExacuted;
 	DelayTemp = ElapsedTime;
 
+
+
 	int alive = 0;
 	for (auto Ball : Balls) {
 		if (!Ball->Dead) {
@@ -294,7 +293,12 @@ void GameLevel::Update()
 					if (CheckCollision(Ball, Target)) {
 
 						//Play sound
-						Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bounce, 0, false, &Sound::GetInstance()->fxchannel);
+						if (IsColiding == false)
+						{
+							Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bounce, 0, false, &Sound::GetInstance()->fxchannel);
+							IsColiding = true;
+						}
+						
 
 						CollidingPairs.push_back({ Ball, Target });
 
@@ -335,6 +339,7 @@ void GameLevel::Update()
 			B1->SpeedY = TY * dpTan1 + NY * M1;
 			B2->SpeedX = TX * dpTan2 + NX * M2;
 			B2->SpeedY = TY * dpTan2 + NY * M2;
+			IsColiding = false;
 		}
 		for (int I = 0; I < CollidingPairs.size(); I++) {
 			CollidingPairs.pop_back();
