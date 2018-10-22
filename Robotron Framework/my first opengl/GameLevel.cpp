@@ -16,6 +16,9 @@ GameLevel::~GameLevel()
 
 void GameLevel::Init()
 {
+	Sound::GetInstance()->Musicchannel->stop();
+	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bgmTheme, 0, false, &Sound::GetInstance()->Musicchannel);
+
 	BallPlayer* Temp;
 
 	if (XBoxControllers[0]->IsConnected())

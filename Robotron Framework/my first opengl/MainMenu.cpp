@@ -46,6 +46,7 @@ void MainMenu::Init()
 	creditsScene->SetTranslation({ 0, 0, 0 });
 
 	Sound::GetInstance()->Musicchannel->stop();
+	Sound::GetInstance()->fxchannel->stop();
 	Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->menuTheme, 0, false, &Sound::GetInstance()->Musicchannel);
 
 	//Play Button
