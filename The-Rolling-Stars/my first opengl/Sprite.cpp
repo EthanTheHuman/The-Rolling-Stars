@@ -1,5 +1,7 @@
 #include "Sprite.h"
 
+glm::vec3 NewScale;
+
 Sprite::Sprite()
 {
 
@@ -212,10 +214,14 @@ void Sprite::AddRotation(glm::vec3 _Rotation)
 void Sprite::SetScale(glm::vec3 _Scale)
 {
 	// Scaling while retaining aspect ratio
-	glm::vec3 NewScale = { (_Scale.x * (width))/width, (_Scale.y * (height))/width, _Scale.z };
+	NewScale = { (_Scale.x * (width))/width, (_Scale.y * (height))/width, _Scale.z };
 	m_ScaleMatrix = glm::scale(glm::mat4(), NewScale);
 	RefreshModelMatrix();
 	RefreshMVP();
+}
+
+glm::vec3 Sprite::GetScale() {
+	return NewScale;
 }
 
 void Sprite::AddScale(glm::vec3 _Scale)

@@ -13,6 +13,7 @@ public:
 	void ChangePosition(glm::vec2 pos);
 	void SetScale(glm::vec3 scale);
 	void AddScale(glm::vec3 scale);
+	glm::vec3 GetScale();
 	float ColisionRadius = 0.1;
 	float Xpos;
 	float Ypos;

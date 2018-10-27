@@ -105,3 +105,8 @@ void BallPlayer::SetScale(glm::vec3 scale) {
 void BallPlayer::AddScale(glm::vec3 scale) {
 	Sprite::AddScale(scale);
 }
+
+glm::vec3  BallPlayer::GetScale() {
+
+	return Sprite::GetScale();
+}

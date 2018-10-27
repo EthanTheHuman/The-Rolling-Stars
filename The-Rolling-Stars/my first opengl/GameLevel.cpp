@@ -270,7 +270,7 @@ void GameLevel::Render()
 		Balls[3]->render();
 	}
 
-	std::cout << DelayTemp << std::endl;
+	std::cout << Balls[0]->GetScale().x << std::endl;
 
 }
 
@@ -280,8 +280,6 @@ void GameLevel::Update()
 	ElapsedTime = CurrentTime - LastExacuted;
 	DelayTemp = ElapsedTime;
 
-
-
 	int alive = 0;
 	for (auto Ball : Balls) {
 		if (!Ball->Dead) {
@@ -289,6 +287,12 @@ void GameLevel::Update()
 		}
 	}
 	if (alive > 1) {
+
+		for (auto Ball : Balls) {
+			Ball->SetScale({ Ball->GetScale() + 0.00003f });
+			Ball->ColisionRadius = Ball->GetScale().x + 0.00003f;
+		}
+
 		for (auto &Target : Balls) {
 			for (auto &Ball : Balls) {
 				if (Ball != Target && !Ball->Dead && !Target->Dead) {
@@ -382,9 +386,7 @@ void GameLevel::Update()
 			for (auto Ball : Balls) {
 				if (!Ball->Dead) {
 					Ball->wins++;
-					float scale = 0.1 + (Ball->wins * 0.2);
-					Ball->SetScale({ scale,scale,scale });
-					Ball->ColisionRadius = scale;
+					
 					Delay = 2.0f;
 
 					if (Ball->wins == 3) {
@@ -394,6 +396,9 @@ void GameLevel::Update()
 			}
 			IsDelayed = false;
 
+			for (auto Ball : Balls) {
+				Ball->SetScale({ glm::vec3(0.1, 0.1, 0.1) });
+			}
 			ResetBalls();
 
 			std::ostringstream P1iConvert;

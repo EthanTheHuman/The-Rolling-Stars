@@ -43,6 +43,7 @@ public:
 	//Scale
 	void SetScale(glm::vec3 _Scale);
 	void AddScale(glm::vec3 _Scale);
+	glm::vec3 GetScale();
 
 	//Texture Coordinates
 	void ChangeCoordinates(Coords _TopLeft, Coords _TopRight, Coords _BottomLeft, Coords _BottomRight);
