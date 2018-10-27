@@ -12,14 +12,15 @@ c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first open
 c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(78): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(80): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(184): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(279): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(350): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(380): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(205): warning C4018: '<': signed/unsigned mismatch
+c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(318): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(389): warning C4018: '<': signed/unsigned mismatch
+c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(419): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(421): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  2 of 1107 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  8 of 1107 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    25 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   My First OpenGL.vcxproj -> C:\Users\GGPC\Documents\GitHub\The-Rolling-Stars\The-Rolling-Stars\Release\My First OpenGL.exe

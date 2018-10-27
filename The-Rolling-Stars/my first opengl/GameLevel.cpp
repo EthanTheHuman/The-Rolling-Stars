@@ -6,8 +6,13 @@ float ElapsedTime = CurrentTime - LastExacuted;
 
 float Delay = 0.0f;
 float DelayTemp;
+
 bool IsDelayed = false;
 bool IsColiding = false;
+bool bPlayer1Wins = false;
+bool bPlayer2Wins = false;
+bool bPlayer3Wins = false;
+bool bPlayer4Wins = false;
 
 
 
@@ -64,6 +69,22 @@ void GameLevel::Init()
 	Arena = new Sprite("Textures/Arena.png", MyCamera, SpriteShader);
 	Arena->AddScale(glm::vec3(2, 2, 0));
 	Arena->SetTranslation(glm::vec3(0.0f, -0.5f, 0.0f));
+
+	Player1Wins = new Sprite("Textures/P1.png", MyCamera, SpriteShader);
+	Player1Wins->AddScale(glm::vec3(-2, 2, 0));
+	Player1Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	Player2Wins = new Sprite("Textures/P2.png", MyCamera, SpriteShader);
+	Player2Wins->AddScale(glm::vec3(-2, 2, 0));
+	Player2Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	Player3Wins = new Sprite("Textures/P3.png", MyCamera, SpriteShader);
+	Player3Wins->AddScale(glm::vec3(-2, 2, 0));
+	Player3Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	Player4Wins = new Sprite("Textures/P4.png", MyCamera, SpriteShader);
+	Player4Wins->AddScale(glm::vec3(-2, 2, 0));
+	Player4Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	if (XBoxControllers[0]->IsConnected())
 	{
@@ -215,6 +236,7 @@ void GameLevel::Render()
 	Arena->render();
 
 	//ScoreBoard Render
+	
 
 	if (ObjectInitialized[0] == true)
 	{
@@ -270,7 +292,24 @@ void GameLevel::Render()
 		Balls[3]->render();
 	}
 
-	std::cout << Balls[0]->GetScale().x << std::endl;
+	//std::cout << Balls[0]->GetScale().x << std::endl;
+	if (bPlayer1Wins)
+	{
+		Player1Wins->render();
+	}
+	if (bPlayer2Wins)
+	{
+		Player2Wins->render();
+	}
+	if (bPlayer3Wins)
+	{
+		Player3Wins->render();
+	}
+	if (bPlayer4Wins)
+	{
+		Player4Wins->render();
+	}
+	
 
 }
 
@@ -378,6 +417,39 @@ void GameLevel::Update()
 			Delay = 3.0f;
 			IsDelayed = true;
 			LastExacuted = glutGet(GLUT_ELAPSED_TIME) / 1000;
+
+			for (int i = 0; i < Balls.size(); i++)
+			{
+				if (!Balls[i]->Dead)
+				{
+					switch (i)
+					{
+					case 0: {
+						bPlayer1Wins = true;
+
+						break;
+					}
+					case 1: {
+						bPlayer2Wins = true;
+
+						break;
+					}
+					case 2: {
+						bPlayer3Wins = true;
+
+						break;
+					}
+					case 3: {
+						bPlayer4Wins = true;
+
+						break;
+					}
+
+					default:
+						break;
+					}
+				}
+			}
 		}
 		if (DelayTemp == Delay)
 		{
@@ -399,6 +471,12 @@ void GameLevel::Update()
 			for (auto Ball : Balls) {
 				Ball->SetScale({ glm::vec3(0.1, 0.1, 0.1) });
 			}
+
+			bPlayer1Wins = false;
+			bPlayer2Wins = false;
+			bPlayer3Wins = false;
+			bPlayer4Wins = false;
+
 			ResetBalls();
 
 			std::ostringstream P1iConvert;
