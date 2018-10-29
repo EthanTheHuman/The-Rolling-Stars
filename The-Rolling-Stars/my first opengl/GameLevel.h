@@ -71,6 +71,10 @@ private:
 	Sprite* Player2Wins;
 	Sprite* Player3Wins;
 	Sprite* Player4Wins;
+	Sprite* OverallPlayer1Wins;
+	Sprite* OverallPlayer2Wins;
+	Sprite* OverallPlayer3Wins;
+	Sprite* OverallPlayer4Wins;
 
 	//HUD
 	TextLabel* Player1;

@@ -9,10 +9,8 @@ float DelayTemp;
 
 bool IsDelayed = false;
 bool IsColiding = false;
-bool bPlayer1Wins = false;
-bool bPlayer2Wins = false;
-bool bPlayer3Wins = false;
-bool bPlayer4Wins = false;
+bool bPlayer1Wins, bPlayer2Wins, bPlayer3Wins, bPlayer4Wins = false;
+bool bOverallPlayer1Wins, bOverallPlayer2Wins, bOverallPlayer3Wins, bOverallPlayer4Wins = false;
 
 
 
@@ -85,6 +83,18 @@ void GameLevel::Init()
 	Player4Wins = new Sprite("Textures/P4.png", MyCamera, SpriteShader);
 	Player4Wins->AddScale(glm::vec3(-2, 2, 0));
 	Player4Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	OverallPlayer1Wins = new Sprite("Textures/Player1.png", MyCamera, SpriteShader);
+	OverallPlayer1Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	OverallPlayer2Wins = new Sprite("Textures/Player2.png", MyCamera, SpriteShader);
+	OverallPlayer2Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	OverallPlayer3Wins = new Sprite("Textures/Player3.png", MyCamera, SpriteShader);
+	OverallPlayer3Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	OverallPlayer4Wins = new Sprite("Textures/Player4.png", MyCamera, SpriteShader);
+	OverallPlayer4Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	if (XBoxControllers[0]->IsConnected())
 	{
@@ -207,15 +217,25 @@ void GameLevel::Deconstruct()
 	}
 	Balls.clear();
 	delete Arena;
-	delete MySkybox;
 	delete Player1ScoreBar;
 	delete Player2ScoreBar;
 	delete Player3ScoreBar;
 	delete Player4ScoreBar;
+	delete Player1Wins;
+	delete Player2Wins;
+	delete Player3Wins;
+	delete Player4Wins;
+	delete OverallPlayer1Wins;
+	delete OverallPlayer2Wins;
+	delete OverallPlayer3Wins;
+	delete OverallPlayer4Wins;
 	delete Player1;
 	delete Player2;
 	delete Player3;
 	delete Player4;
+
+
+
 	nextScene = NOTHING;
 	ObjectInitialized.clear();
 }
@@ -319,6 +339,25 @@ void GameLevel::Render()
 	if (bPlayer4Wins)
 	{
 		Player4Wins->render();
+	}
+
+	//overall Win Sprite
+
+	if (bOverallPlayer1Wins)
+	{
+		OverallPlayer1Wins->render();
+	}
+	if (bOverallPlayer2Wins)
+	{
+		OverallPlayer2Wins->render();
+	}
+	if (bOverallPlayer3Wins)
+	{
+		OverallPlayer3Wins->render();
+	}
+	if (bOverallPlayer4Wins)
+	{
+		OverallPlayer4Wins->render();
 	}
 	
 
@@ -434,7 +473,7 @@ void GameLevel::Update()
 
 			for (int i = 0; i < Balls.size(); i++)
 			{
-				if (!Balls[i]->Dead)
+				if (!Balls[i]->Dead && Balls[i]->wins != 3)
 				{
 					switch (i)
 					{
@@ -455,6 +494,35 @@ void GameLevel::Update()
 					}
 					case 3: {
 						bPlayer4Wins = true;
+
+						break;
+					}
+
+					default:
+						break;
+					}
+				}
+				if (!Balls[i]->Dead && Balls[i]->wins == 3)
+				{
+					switch (i)
+					{
+					case 0: {
+						bOverallPlayer1Wins = true;
+
+						break;
+					}
+					case 1: {
+						bOverallPlayer2Wins = true;
+
+						break;
+					}
+					case 2: {
+						bOverallPlayer3Wins = true;
+
+						break;
+					}
+					case 3: {
+						bOverallPlayer4Wins = true;
 
 						break;
 					}
@@ -490,6 +558,10 @@ void GameLevel::Update()
 			bPlayer2Wins = false;
 			bPlayer3Wins = false;
 			bPlayer4Wins = false;
+			bOverallPlayer1Wins = false;
+			bOverallPlayer2Wins = false;
+			bOverallPlayer3Wins = false;
+			bOverallPlayer4Wins = false;
 
 			ResetBalls();
 

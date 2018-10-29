@@ -43,7 +43,7 @@ glm::mat4 Camera::GetViewMatrix()
 
 void Camera::SetViewMatrix()
 {
-	m_ViewMatrix = glm::lookAt(m_CameraPosition, glm::vec3(0, 0, 0), m_CameraNormal);
+	m_ViewMatrix = glm::lookAt(m_CameraPosition, m_CameraFacing, m_CameraNormal);
 }
 
 void Camera::SetViewMatrix(glm::vec3 _Position, glm::vec3 _Facing, glm::vec3 _Normal)

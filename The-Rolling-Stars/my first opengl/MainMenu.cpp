@@ -20,7 +20,7 @@ void MainMenu::Init()
 {
 	CurrentState = MainMenues;
 
-	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	MyCamera = new Camera(glm::vec3(0, 0, -3), glm::vec3(0, 90, 0), glm::vec3(0, 1, 0));
 	UISpriteShader = shaderloader.CreateProgram("Shaders/UISprite.vs", "Shaders/UISprite.fs");
 	SkyboxShader = shaderloader.CreateProgram("Shaders/Cubemap.vs", "Shaders/Cubemap.fs");
 	TextLableShader = shaderloader.CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
