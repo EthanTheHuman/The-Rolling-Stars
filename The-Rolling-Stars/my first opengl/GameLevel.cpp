@@ -227,10 +227,21 @@ void GameLevel::Render()
 
 	MySkybox->Render();
 
-	for (auto Ball : Balls) {
-		if (Ball->DeadY) {
-			Ball->render();
-		}
+	if (ObjectInitialized[0] == true && Balls[0]->DeadY)
+	{
+		Balls[0]->render();
+	}
+	if (ObjectInitialized[1] == true && Balls[1]->DeadY)
+	{
+		Balls[1]->render();
+	}
+	if (ObjectInitialized[2] == true && Balls[2]->DeadY)
+	{
+		Balls[2]->render();
+	}
+	if (ObjectInitialized[3] == true && Balls[3]->DeadY)
+	{
+		Balls[3]->render();
 	}
 
 	Arena->render();
@@ -275,19 +286,19 @@ void GameLevel::Render()
 	}
 
 	//Player Render
-	if (ObjectInitialized[0] == true)
+	if (ObjectInitialized[0] == true && !Balls[0]->DeadY)
 	{
 		Balls[0]->render();
 	}
-	if (ObjectInitialized[1] == true)
+	if (ObjectInitialized[1] == true && !Balls[1]->DeadY)
 	{
 		Balls[1]->render();
 	}
-	if (ObjectInitialized[2] == true)
+	if (ObjectInitialized[2] == true && !Balls[2]->DeadY)
 	{
 		Balls[2]->render();
 	}
-	if (ObjectInitialized[3] == true)
+	if (ObjectInitialized[3] == true && !Balls[3]->DeadY)
 	{
 		Balls[3]->render();
 	}
