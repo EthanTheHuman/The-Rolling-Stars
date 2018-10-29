@@ -247,7 +247,6 @@ void GameLevel::Render()
 	Arena->render();
 
 	//ScoreBoard Render
-	
 
 	if (ObjectInitialized[0] == true)
 	{
@@ -303,7 +302,8 @@ void GameLevel::Render()
 		Balls[3]->render();
 	}
 
-	//std::cout << Balls[0]->GetScale().x << std::endl;
+	//Player Win Sprite
+
 	if (bPlayer1Wins)
 	{
 		Player1Wins->render();
@@ -339,8 +339,11 @@ void GameLevel::Update()
 	if (alive > 1) {
 
 		for (auto Ball : Balls) {
-			Ball->SetScale({ Ball->GetScale() + 0.00003f });
-			Ball->ColisionRadius = Ball->GetScale().x + 0.00003f;
+			if (!Ball->DeadY)
+			{
+				Ball->SetScale({ Ball->GetScale() + 0.00003f });
+				Ball->ColisionRadius = Ball->GetScale().x + 0.00003f;
+			}
 		}
 
 		for (auto &Target : Balls) {
