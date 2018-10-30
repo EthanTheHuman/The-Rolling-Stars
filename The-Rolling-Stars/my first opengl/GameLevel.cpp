@@ -85,15 +85,19 @@ void GameLevel::Init()
 	Player4Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	OverallPlayer1Wins = new Sprite("Textures/Player1.png", MyCamera, SpriteShader);
+	OverallPlayer1Wins->AddScale(glm::vec3(-2, 2, 0));
 	OverallPlayer1Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	OverallPlayer2Wins = new Sprite("Textures/Player2.png", MyCamera, SpriteShader);
+	OverallPlayer2Wins->AddScale(glm::vec3(-2, 2, 0));
 	OverallPlayer2Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	OverallPlayer3Wins = new Sprite("Textures/Player3.png", MyCamera, SpriteShader);
+	OverallPlayer3Wins->AddScale(glm::vec3(-2, 2, 0));
 	OverallPlayer3Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	OverallPlayer4Wins = new Sprite("Textures/Player4.png", MyCamera, SpriteShader);
+	OverallPlayer4Wins->AddScale(glm::vec3(-2, 2, 0));
 	OverallPlayer4Wins->SetTranslation(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	if (XBoxControllers[0]->IsConnected())
@@ -473,7 +477,7 @@ void GameLevel::Update()
 
 			for (int i = 0; i < Balls.size(); i++)
 			{
-				if (!Balls[i]->Dead && Balls[i]->wins != 3)
+				if (!Balls[i]->Dead && Balls[i]->wins != 2)
 				{
 					switch (i)
 					{
@@ -502,7 +506,7 @@ void GameLevel::Update()
 						break;
 					}
 				}
-				if (!Balls[i]->Dead && Balls[i]->wins == 3)
+				if (!Balls[i]->Dead && Balls[i]->wins == 2)
 				{
 					switch (i)
 					{
