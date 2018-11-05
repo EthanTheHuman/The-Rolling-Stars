@@ -221,10 +221,18 @@ void GameLevel::Deconstruct()
 	}
 	Balls.clear();
 	delete Arena;
-	delete Player1ScoreBar;
-	delete Player2ScoreBar;
-	delete Player3ScoreBar;
-	delete Player4ScoreBar;
+	if (ObjectInitialized[0]) {
+		delete Player1ScoreBar;
+	}
+	if (ObjectInitialized[1]) {
+		delete Player2ScoreBar;
+	}
+	if (ObjectInitialized[2]) {
+		delete Player3ScoreBar;
+	}
+	if (ObjectInitialized[3]) {
+		delete Player4ScoreBar;
+	}
 	delete Player1Wins;
 	delete Player2Wins;
 	delete Player3Wins;
