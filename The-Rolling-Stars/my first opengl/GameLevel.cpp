@@ -223,30 +223,28 @@ void GameLevel::Deconstruct()
 	delete Arena;
 	if (ObjectInitialized[0]) {
 		delete Player1ScoreBar;
+		delete Player1Wins;
+		delete OverallPlayer1Wins;
+		delete Player1;
 	}
 	if (ObjectInitialized[1]) {
 		delete Player2ScoreBar;
+		delete Player2Wins;
+		delete OverallPlayer2Wins;
+		delete Player2;
 	}
 	if (ObjectInitialized[2]) {
 		delete Player3ScoreBar;
+		delete Player3Wins;
+		delete OverallPlayer3Wins;
+		delete Player3;
 	}
 	if (ObjectInitialized[3]) {
 		delete Player4ScoreBar;
+		delete Player4Wins;
+		delete OverallPlayer4Wins;
+		delete Player4;
 	}
-	delete Player1Wins;
-	delete Player2Wins;
-	delete Player3Wins;
-	delete Player4Wins;
-	delete OverallPlayer1Wins;
-	delete OverallPlayer2Wins;
-	delete OverallPlayer3Wins;
-	delete OverallPlayer4Wins;
-	delete Player1;
-	delete Player2;
-	delete Player3;
-	delete Player4;
-
-
 
 	nextScene = NOTHING;
 	ObjectInitialized.clear();
@@ -390,7 +388,7 @@ void GameLevel::Update()
 	if (alive > 1) {
 
 		for (auto Ball : Balls) {
-			if (!Ball->DeadY)
+			if (!Ball->Dead)
 			{
 				Ball->SetScale({ Ball->GetScale() + 0.00003f });
 				Ball->ColisionRadius = Ball->GetScale().x + 0.00003f;
