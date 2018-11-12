@@ -6,6 +6,7 @@ float ElapsedTime = CurrentTime - LastExacuted;
 
 float Delay = 0.0f;
 float DelayTemp;
+bool IsBouncy = false;
 
 bool IsDelayed = false;
 bool IsColiding = false;
@@ -375,6 +376,11 @@ void GameLevel::Update()
 	ElapsedTime = CurrentTime - LastExacuted;
 	DelayTemp = ElapsedTime;
 
+	if (XBoxControllers[0]->GetState().Gamepad.wButtons == XINPUT_GAMEPAD_Y)
+	{
+		IsBouncy = true;
+	}
+
 	int alive = 0;
 	for (auto Ball : Balls) {
 		if (!Ball->Dead) {
@@ -399,7 +405,14 @@ void GameLevel::Update()
 						//Play sound
 						if (IsColiding == false)
 						{
-							Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bounce, 0, false, &Sound::GetInstance()->fxchannel);
+							if (IsBouncy)
+							{
+								Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bouncey, 0, false, &Sound::GetInstance()->fxchannel);
+							}
+							else
+							{
+								Sound::GetInstance()->audioMgr->playSound(Sound::GetInstance()->bounce, 0, false, &Sound::GetInstance()->fxchannel);
+							}
 							IsColiding = true;
 						}
 						
@@ -466,11 +479,8 @@ void GameLevel::Update()
 			}
 		}
 		for (auto Ball : Balls) {
-			if (!Ball->Dead)
-			{
+
 				Ball->UpdateCharater();
-			}
-			
 		}
 	}
 	else {

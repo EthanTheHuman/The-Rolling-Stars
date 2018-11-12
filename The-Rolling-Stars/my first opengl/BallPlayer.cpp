@@ -16,81 +16,86 @@ void BallPlayer::Init(char * _filename, Camera * _camera, GLuint _program, CXBOX
 
 void BallPlayer::render()
 {
-	Sprite::render();
+	if (m_pCXboxController != nullptr) {
+		Sprite::render();
+	}
 }
 
 void BallPlayer::MoveCharacter(unsigned char KeyState[255])
 {
-	if (!Dead) {
-		if (m_pCXboxController->IsConnected()) {
-			std::pair<float, float> XandY = m_pCXboxController->GetInput();
-			SpeedX -= XandY.first * acceleration;
-			SpeedY += XandY.second * acceleration;
+	if (m_pCXboxController != nullptr) {
+		if (!Dead) {
+			if (m_pCXboxController->IsConnected()) {
+				std::pair<float, float> XandY = m_pCXboxController->GetInput();
+				SpeedX -= XandY.first * acceleration;
+				SpeedY += XandY.second * acceleration;
+			}
 		}
-	}
-	else {
-		SpeedY -= acceleration;
+		else {
+			SpeedY -= acceleration;
+		}
 	}
 }
 
 void BallPlayer::UpdateCharater()
 {
+	if (m_pCXboxController != nullptr) {
+		if (SpeedX < friction && SpeedX > -friction) {
+			SpeedX = 0;
+		}
+		else {
+			if (SpeedX > 0) {
+				SpeedX -= friction;
+			}
+			if (SpeedX < 0) {
+				SpeedX += friction;
+			}
+		}
+		if (SpeedY < friction && SpeedY > -friction) {
+			SpeedY = 0;
+		}
+		else {
+			if (SpeedY > 0) {
+				SpeedY -= friction;
+			}
+			if (SpeedY < 0) {
+				SpeedY += friction;
+			}
+		}
 
-	if (SpeedX < friction && SpeedX > -friction) {
-		SpeedX = 0;
-	}
-	else {
-		if (SpeedX > 0) {
-			SpeedX -= friction;
+		//Boundaries
+		if (this->Dead) {
+			if (Xpos + SpeedX < -2.25f) {
+				Sprite::SetTranslation({ Xpos, Ypos, 0 });
+				SpeedX = 0;
+				SpeedY = 0;
+				return;
+			}
+			if (Xpos + SpeedX > 2.25f) {
+				Sprite::SetTranslation({ Xpos, Ypos, 0 });
+				SpeedX = 0;
+				SpeedY = 0;
+				return;
+			}
+			if (Ypos + SpeedY < -10.0f) {
+				Sprite::SetTranslation({ Xpos, Ypos, 0 });
+				SpeedX = 0;
+				SpeedY = 0;
+				return;
+			}
+			if (Ypos + SpeedY > 1.75f) {
+				Sprite::SetTranslation({ Xpos, Ypos, 0 });
+				SpeedX = 0;
+				SpeedY = 0;
+				return;
+			}
 		}
-		if (SpeedX < 0) {
-			SpeedX += friction;
-		}
-	}
-	if (SpeedY < friction && SpeedY > -friction) {
-		SpeedY = 0;
-	}
-	else {
-		if (SpeedY > 0) {
-			SpeedY -= friction;
-		}
-		if (SpeedY < 0) {
-			SpeedY += friction;
-		}
-	}
 
-	//Boundaries
-	if (this->Dead) {
-		if (Xpos + SpeedX < -2.25f) {
-			Sprite::SetTranslation({ Xpos, Ypos, 0 });
-			SpeedX = 0;
-			SpeedY = 0;
-			return;
-		}
-		if (Xpos + SpeedX > 2.25f) {
-			Sprite::SetTranslation({ Xpos, Ypos, 0 });
-			SpeedX = 0;
-			SpeedY = 0;
-			return;
-		}
-		if (Ypos + SpeedY < -10.0f) {
-			Sprite::SetTranslation({ Xpos, Ypos, 0 });
-			SpeedX = 0;
-			SpeedY = 0;
-			return;
-		}
-		if (Ypos + SpeedY > 1.75f) {
-			Sprite::SetTranslation({ Xpos, Ypos, 0 });
-			SpeedX = 0;
-			SpeedY = 0;
-			return;
-		}
+		//Update player posistion
+		Ypos += SpeedY;
+		Xpos += SpeedX;
+		Sprite::SetTranslation({ Xpos, Ypos, 0 });
 	}
-
-	//Update player posistion
-	Ypos += SpeedY;
-	Xpos += SpeedX;
-	Sprite::SetTranslation({ Xpos, Ypos, 0 });
 }
 
 void BallPlayer::ChangePosition(glm::vec2 pos) {
