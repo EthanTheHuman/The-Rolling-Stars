@@ -1,26 +1,26 @@
 ﻿  GameLevel.cpp
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
-  c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ballplayer.h(17): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ballplayer.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ballplayer.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(73): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(74): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(75): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(76): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(78): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(80): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(219): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(383): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(457): warning C4018: '<': signed/unsigned mismatch
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(487): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ggpc\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(489): warning C4018: '<': signed/unsigned mismatch
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\cxboxcontroller.h(5): warning C4005: 'WIN32_LEAN_AND_MEAN': macro redefinition
+  d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\dependencies\freeglut\freeglut_std.h(58): note: see previous definition of 'WIN32_LEAN_AND_MEAN'
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ballplayer.h(17): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ballplayer.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ballplayer.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(73): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(74): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(75): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(76): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(78): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(80): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\ellipsecollisiontest.h(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(210): warning C4018: '<': signed/unsigned mismatch
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(374): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(448): warning C4018: '<': signed/unsigned mismatch
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(482): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\users\jacob.dew7364\documents\github\the-rolling-stars\the-rolling-stars\my first opengl\gamelevel.cpp(484): warning C4018: '<': signed/unsigned mismatch
   Generating code
   1 of 1108 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  My First OpenGL.vcxproj -> C:\Users\GGPC\Documents\GitHub\The-Rolling-Stars\The-Rolling-Stars\Release\My First OpenGL.exe
+  My First OpenGL.vcxproj -> D:\Users\Jacob.Dew7364\Documents\GitHub\The-Rolling-Stars\The-Rolling-Stars\Release\My First OpenGL.exe

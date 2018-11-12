@@ -32,26 +32,17 @@ void GameLevel::Init()
 
 	BallPlayer* Temp;
 
-	if (XBoxControllers[0]->IsConnected())
-	{
 		Temp = new BallPlayer();
 		Balls.push_back(Temp);
-	}
-	if (XBoxControllers[1]->IsConnected())
-	{
+
 		Temp = new BallPlayer();
 		Balls.push_back(Temp);
-	}
-	if (XBoxControllers[2]->IsConnected())
-	{
+
 		Temp = new BallPlayer();
 		Balls.push_back(Temp);
-	}
-	if (XBoxControllers[3]->IsConnected())
-	{
+
 		Temp = new BallPlayer();
 		Balls.push_back(Temp);
-	}
 
 	Sound::GetInstance()->Musicchannel->stop();
 	Sound::GetInstance()->fxchannel->stop();
@@ -153,7 +144,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		//Balls[0]->Dead = true;
+		Balls[0]->Dead = true;
 	}
 
 	if (XBoxControllers[1]->IsConnected())
@@ -168,7 +159,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		//Balls[1]->Dead = true;
+		Balls[1]->Dead = true;
 	}
 
 	if (XBoxControllers[2]->IsConnected())
@@ -183,7 +174,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		//Balls[2]->Dead = true;
+		Balls[2]->Dead = true;
 	}
 
 	if (XBoxControllers[3]->IsConnected())
@@ -198,7 +189,7 @@ void GameLevel::Init()
 	else
 	{
 		ObjectInitialized.push_back(false);
-		//Balls[3]->Dead = true;
+		Balls[3]->Dead = true;
 	}
 
 	Player1 = new TextLabel("0", "Fonts/arial.ttf", glm::vec2(78.0f, 505.0f), TextLableShader);
@@ -475,7 +466,11 @@ void GameLevel::Update()
 			}
 		}
 		for (auto Ball : Balls) {
-			Ball->UpdateCharater();
+			if (!Ball->Dead)
+			{
+				Ball->UpdateCharater();
+			}
+			
 		}
 	}
 	else {
@@ -564,9 +559,14 @@ void GameLevel::Update()
 				}
 			}
 			IsDelayed = false;
+			int TempCount = 0;
 
 			for (auto Ball : Balls) {
-				Ball->SetScale({ glm::vec3(0.1, 0.1, 0.1) });
+				if (ObjectInitialized[TempCount])
+				{
+					Ball->SetScale({ glm::vec3(0.1, 0.1, 0.1) });
+				}
+				TempCount++;
 			}
 
 			bPlayer1Wins = false;
@@ -667,10 +667,16 @@ void GameLevel::ResetBalls()
 		Balls[3]->ChangePosition({ -0.5, -1.0 });
 	}
 
+	int TempCount = 0;
+
 	for (auto Ball : Balls) {
-		Ball->Dead = false;
-		Ball->DeadY = false;
-		Ball->SpeedX = 0;
-		Ball->SpeedY = 0;
+		if ((ObjectInitialized[TempCount] == true))
+		{
+				Ball->Dead = false;
+				Ball->DeadY = false;
+				Ball->SpeedX = 0;
+				Ball->SpeedY = 0;
+		}
+		TempCount++;
 	}
 }

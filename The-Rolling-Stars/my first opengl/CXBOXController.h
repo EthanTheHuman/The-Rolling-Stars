@@ -3,7 +3,7 @@
 
 // No MFC
 #define WIN32_LEAN_AND_MEAN
-#define INPUT_DEADZONE 8000
+#define INPUT_DEADZONE 15000
 
 // We need the Windows Header and the XInput Header
 #include<windows.h>

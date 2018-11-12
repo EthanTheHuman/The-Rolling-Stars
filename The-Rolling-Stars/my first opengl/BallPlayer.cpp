@@ -73,7 +73,7 @@ void BallPlayer::UpdateCharater()
 			SpeedY = 0;
 			return;
 		}
-		if (Ypos + SpeedY < -2.0f) {
+		if (Ypos + SpeedY < -10.0f) {
 			Sprite::SetTranslation({ Xpos, Ypos, 0 });
 			SpeedX = 0;
 			SpeedY = 0;
